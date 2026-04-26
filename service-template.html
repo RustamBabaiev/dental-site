@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="mt">Услуга | СтомаПрайм</title>
+  <meta name="description" id="md" content="">
+  <link rel="canonical" id="can" href="">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+<style>
+/* ── SERVICE HERO ─────────────────────────────────────────── */
+.svc-hero {
+  background:#f7f9fd; padding:60px 0 0;
+  border-bottom:1px solid #edf1f7; overflow:hidden; position:relative;
+}
+.svc-hero::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 60% 80% at 90% 50%, rgba(37,99,235,0.06) 0%, transparent 60%);
+}
+.svc-hero-inner {
+  display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:end; position:relative;
+}
+@media(max-width:800px){.svc-hero-inner{grid-template-columns:1fr;gap:36px;}}
+.svc-hero-h1 { font-family:'Outfit',sans-serif; font-weight:900; color:#0c1628; font-size:clamp(1.9rem,4vw,2.8rem); line-height:1.08; letter-spacing:-0.04em; margin-bottom:14px; }
+.svc-hero-p  { font-size:1.02rem; color:#6b7fa0; line-height:1.75; margin-bottom:28px; }
+.svc-hero-btns { display:flex; gap:11px; flex-wrap:wrap; margin-bottom:44px; }
+.svc-hero-img { width:100%; height:400px; object-fit:cover; border-radius:22px 22px 0 0; box-shadow:0 -4px 32px rgba(12,22,40,0.1); display:block; }
+@media(max-width:800px){.svc-hero-img{height:240px;border-radius:18px;}}
+
+/* ── PAGE LAYOUT ──────────────────────────────────────────── */
+.svc-layout { display:grid; grid-template-columns:1fr 340px; gap:36px; align-items:start; }
+@media(max-width:960px){.svc-layout{grid-template-columns:1fr;}}
+.svc-sticky { position:sticky; top:88px; display:flex; flex-direction:column; gap:16px; }
+
+/* ── BENEFITS ─────────────────────────────────────────────── */
+.ben-list { display:flex; flex-direction:column; gap:12px; }
+.ben-item {
+  display:flex; align-items:flex-start; gap:14px; padding:18px 20px;
+  background:#fff; border-radius:14px; border:1px solid #edf1f7;
+  box-shadow:0 1px 6px rgba(12,22,40,0.05); transition:.22s;
+}
+.ben-item:hover{border-color:#bfdbfe;box-shadow:0 4px 16px rgba(37,99,235,0.08);transform:translateX(3px);}
+.ben-n {
+  width:32px;height:32px;min-width:32px;background:linear-gradient(135deg,#eff6ff,#dbeafe);
+  color:#1d4ed8;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-size:.78rem;font-weight:800;font-family:'Outfit',sans-serif;
+}
+.ben-txt { font-size:.9rem; color:#4b5875; line-height:1.6; }
+.ben-txt strong { display:block; color:#0c1628; font-size:.92rem; margin-bottom:2px; }
+
+/* ── STEPS ────────────────────────────────────────────────── */
+.steps-g { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:18px; }
+.step-card { background:#fff; border-radius:16px; padding:24px 20px; border:1px solid #edf1f7; box-shadow:0 2px 10px rgba(12,22,40,0.05); text-align:center; transition:.24s cubic-bezier(.4,0,.2,1); }
+.step-card:hover{box-shadow:0 8px 28px rgba(12,22,40,0.09);transform:translateY(-3px);}
+.step-n { width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:900;margin:0 auto 14px; }
+.step-title { font-family:'Outfit',sans-serif; font-size:.92rem; font-weight:700; color:#0c1628; margin-bottom:6px; }
+.step-desc  { font-size:.8rem; color:#6b7fa0; line-height:1.6; }
+
+/* ── FAQ ──────────────────────────────────────────────────── */
+.faq-item { background:#fff; border-radius:14px; border:1px solid #edf1f7; overflow:hidden; margin-bottom:10px; box-shadow:0 1px 5px rgba(12,22,40,0.04); }
+.faq-q { padding:17px 20px; font-size:.92rem; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:12px; transition:color .15s; color:#0c1628; }
+.faq-q:hover{color:#2563eb;}
+.faq-arr{font-size:.85rem;color:#8a9ab5;transition:.22s;flex-shrink:0;}
+.faq-arr.open{transform:rotate(180deg);color:#2563eb;}
+.faq-a { padding:0 20px; font-size:.88rem; color:#6b7fa0; line-height:1.72; max-height:0; overflow:hidden; transition:all .3s cubic-bezier(.4,0,.2,1); }
+.faq-a.open{max-height:200px;padding:0 20px 16px;}
+
+/* ── SIDEBAR ──────────────────────────────────────────────── */
+.side-card { background:#fff; border-radius:18px; border:1px solid #edf1f7; box-shadow:0 4px 20px rgba(12,22,40,0.08); overflow:hidden; }
+.side-card-head { background:linear-gradient(135deg,#1e3a8a,#2563eb); padding:22px 24px; color:#fff; }
+.side-card-head h3 { font-family:'Outfit',sans-serif; font-size:1.08rem; font-weight:800; margin-bottom:4px; letter-spacing:-0.025em; }
+.side-card-head p { font-size:.8rem; opacity:.82; }
+.side-card-body { padding:22px; display:flex; flex-direction:column; gap:11px; }
+
+.side-price { background:#f8fafd; border-radius:14px; border:1px solid #edf1f7; overflow:hidden; }
+.side-price-head { padding:13px 18px; background:#fff; border-bottom:1px solid #f0f4f8; font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:#8a9ab5; }
+.side-prow { display:flex; justify-content:space-between; align-items:center; padding:11px 18px; border-bottom:1px solid #f5f7fa; gap:12px; }
+.side-prow:last-child{border-bottom:none;}
+.side-psvc{font-size:.84rem;color:#0c1628;}
+.side-pval{font-size:.84rem;font-weight:700;color:#1d4ed8;white-space:nowrap;}
+
+.other-links { display:flex; flex-direction:column; gap:6px; }
+.other-link {
+  display:flex; align-items:center; gap:10px; padding:11px 15px;
+  background:#fff; border-radius:10px; border:1px solid #edf1f7;
+  font-size:.875rem; font-weight:600; color:#6b7fa0;
+  transition:.18s; text-decoration:none;
+}
+.other-link:hover{color:#2563eb;background:#f5f8ff;border-color:#bfdbfe;transform:translateX(3px);}
+.other-link-arrow{margin-left:auto;color:#c4cfe0;}
+</style>
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+<main>
+
+<!-- Hero -->
+<section class="svc-hero" aria-label="Услуга">
+  <div class="container">
+    <nav class="breadcrumb"><a href="../index.html">Главная</a><span class="breadcrumb-sep">›</span><a href="../index.html#services">Услуги</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current" id="bc"></span></nav>
+    <div class="svc-hero-inner">
+      <div>
+        <div class="label reveal" id="hero-label"></div>
+        <h1 class="svc-hero-h1 reveal d1" id="hero-h1"></h1>
+        <p class="svc-hero-p reveal d2" id="hero-desc"></p>
+        <div class="svc-hero-btns reveal d3">
+          <a href="#svc-form" class="btn btn-primary btn-lg">Записаться на консультацию</a>
+          <a href="#" class="btn btn-wa btn-lg" id="hero-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+      <div class="reveal-r"><img id="hero-img" src="" alt="" class="svc-hero-img" loading="eager"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Content -->
+<section class="section">
+  <div class="container">
+    <div class="svc-layout">
+
+      <!-- Main -->
+      <div>
+        <div class="sec-head reveal">
+          <div class="label">Наши преимущества</div>
+          <h2 class="h2" id="ben-title">Почему выбирают нас</h2>
+          <div class="accent-line w"></div>
+        </div>
+        <div class="ben-list reveal" id="ben-list"></div>
+
+        <div class="sec-head reveal" style="margin-top:64px">
+          <div class="label">Процесс лечения</div>
+          <h2 class="h2">Этапы приёма</h2>
+          <div class="accent-line w"></div>
+        </div>
+        <div class="steps-g" id="steps"></div>
+
+        <div class="sec-head reveal" style="margin-top:64px">
+          <div class="label">Вопросы и ответы</div>
+          <h2 class="h2">Часто спрашивают</h2>
+          <div class="accent-line w"></div>
+        </div>
+        <div id="faq"></div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="svc-sticky">
+        <div class="side-card" id="svc-form">
+          <div class="side-card-head"><h3>Записаться на приём</h3><p>Ответим в течение 15 минут</p></div>
+          <div class="side-card-body" id="side-form"></div>
+        </div>
+        <div class="side-price" id="side-price"></div>
+        <div style="background:#fff;border-radius:16px;border:1px solid #edf1f7;overflow:hidden">
+          <div style="padding:13px 18px;border-bottom:1px solid #f0f4f8;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#8a9ab5">Другие услуги</div>
+          <div style="padding:10px" class="other-links" id="other"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Doctors row -->
+<section class="section section-bg" aria-label="Врачи">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <div class="label">Специалисты</div>
+      <h2 class="h2">Врачи по этой услуге</h2>
+      <div class="accent-line c w"></div>
+    </div>
+    <div class="g4" id="doc-row"></div>
+    <div style="text-align:center;margin-top:36px" class="reveal">
+      <a href="../doctors.html" class="btn btn-outline btn-lg">Все врачи →</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site-footer" id="site-footer"></footer>
+<script src="../config.js"></script><script src="../shared.js"></script>
+<script>
+const SVC_STEPS = {
+  default:[
+    {n:'1',t:'Консультация',d:'Осмотр, рентген, составление плана лечения'},
+    {n:'2',t:'Анестезия',   d:'Безболезненное обезболивание современными препаратами'},
+    {n:'3',t:'Процедура',   d:'Лечение по согласованному плану'},
+    {n:'4',t:'Контроль',    d:'Рекомендации и осмотр через месяц'},
+  ],
+  implantation:[
+    {n:'1',t:'КТ и план',    d:'Компьютерная томография, 3D-планирование'},
+    {n:'2',t:'Установка',   d:'Операция под анестезией, 40–60 минут'},
+    {n:'3',t:'Заживление',  d:'3–6 месяцев для надёжного приживления'},
+    {n:'4',t:'Коронка',     d:'Изготовление и фиксация коронки'},
+  ],
+  braces:[
+    {n:'1',t:'Консультация',d:'Диагностика прикуса, слепки, фото'},
+    {n:'2',t:'Установка',   d:'Фиксация брекетов, около 2 часов'},
+    {n:'3',t:'Коррекция',   d:'Плановые визиты каждые 4–6 недель'},
+    {n:'4',t:'Ретенция',    d:'Ретейнеры после снятия брекетов'},
+  ],
+};
+const SVC_FAQ = {
+  default:[
+    {q:'Больно ли делать процедуру?',a:'Нет. Применяем современные анестетики — полная безболезненность гарантирована.'},
+    {q:'Сколько занимает лечение?',  a:'Большинство процедур — один визит. Сложные случаи — несколько посещений.'},
+    {q:'Есть ли гарантия?',          a:'Да. Мы даём письменную гарантию на все виды работ. Подробности уточним на консультации.'},
+    {q:'Сколько это стоит?',         a:'Стоимость зависит от объёма и сложности. Точную цену назовём после осмотра — бесплатно.'},
+  ],
+  implantation:[
+    {q:'Больно ли делать имплантацию?',   a:'Нет. Операция проходит под местной анестезией. После — небольшой дискомфорт 2–3 дня, который снимается препаратами.'},
+    {q:'Сколько служит имплант?',          a:'При правильном уходе — пожизненно. Мы даём гарантию приживаемости 5 лет.'},
+    {q:'Можно ли сразу после удаления?',   a:'Да, это называется немедленная имплантация. Применяется при определённых условиях после осмотра.'},
+    {q:'Какие импланты используете?',      a:'Nobel Biocare (Швейцария), Straumann (Швейцария), Osstem (Корея) — только проверенные бренды с гарантией производителя.'},
+  ],
+};
+
+const SVC_CAT = {
+  implantation:'Имплантация', braces:'Ортодонтия', cleaning:'Гигиена и профилактика',
+  whitening:'Гигиена и профилактика', caries:'Терапия', prosthetics:'Терапия',
+  children:'Терапия', surgery:'Хирургия'
+};
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  const d   = SITE_DATA;
+  const file = location.pathname.split('/').pop().replace('.html','');
+  const svc  = d.services.find(s=>s.id===file) || d.services[0];
+
+  document.getElementById('mt').textContent  = svc.seoTitle;
+  document.getElementById('md').content      = svc.seoDesc;
+  document.getElementById('can').href        = svc.file;
+  document.getElementById('bc').textContent  = svc.title;
+  document.getElementById('hero-label').textContent = svc.title;
+  document.getElementById('hero-h1').textContent    = svc.h1;
+  document.getElementById('hero-desc').textContent  = svc.description;
+  document.getElementById('hero-img').src    = svc.image;
+  document.getElementById('hero-img').alt    = svc.h1;
+  document.getElementById('hero-wa').href    = UTILS.whatsappLink();
+  document.getElementById('ben-title').textContent  = `Преимущества — ${svc.title.toLowerCase()}`;
+
+  // Benefits
+  document.getElementById('ben-list').innerHTML = svc.benefits.map((b,i)=>`
+    <div class="ben-item reveal d${i+1}">
+      <div class="ben-n">${i+1}</div>
+      <div class="ben-txt"><strong>${b}</strong></div>
+    </div>`).join('');
+
+  // Steps
+  const steps = SVC_STEPS[svc.id] || SVC_STEPS.default;
+  document.getElementById('steps').innerHTML = steps.map((s,i)=>`
+    <div class="step-card reveal d${i+1}">
+      <div class="step-n">${s.n}</div>
+      <div class="step-title">${s.t}</div>
+      <div class="step-desc">${s.d}</div>
+    </div>`).join('');
+
+  // FAQ
+  const faqs = SVC_FAQ[svc.id] || SVC_FAQ.default;
+  document.getElementById('faq').innerHTML = faqs.map((f,i)=>`
+    <div class="faq-item reveal">
+      <div class="faq-q" onclick="toggleFaq(${i})">
+        ${f.q}<span class="faq-arr" id="fa${i}">▼</span>
+      </div>
+      <div class="faq-a" id="fb${i}">${f.a}</div>
+    </div>`).join('');
+
+  // Sidebar form
+  document.getElementById('side-form').innerHTML=`
+    <form id="svc-booking" novalidate>
+      <div class="form-group"><input name="name" type="text" class="form-input" placeholder="Ваше имя" required autocomplete="name"></div>
+      <div class="form-group"><input name="phone" type="tel" class="form-input" placeholder="+7 (___) ___-__-__" required autocomplete="tel"></div>
+      <input type="hidden" name="service" value="${svc.title}">
+      <button type="submit" class="btn btn-primary" style="width:100%">Записаться</button>
+      <div style="display:flex;gap:8px;margin-top:9px">
+        <a href="${UTILS.whatsappLink()}" class="btn btn-wa btn-sm" style="flex:1;justify-content:center" target="_blank">💬 WA</a>
+        <a href="${d.contacts.telegramLink}" class="btn btn-tg btn-sm" style="flex:1;justify-content:center" target="_blank">✈️ TG</a>
+      </div>
+    </form>`;
+  document.getElementById('svc-booking').addEventListener('submit', e=>handleFormSubmit(e,document.getElementById('svc-booking')));
+
+  // Sidebar price
+  const catName = SVC_CAT[svc.id]||'Терапия';
+  const cat     = d.prices.find(p=>p.category===catName);
+  if(cat){
+    document.getElementById('side-price').innerHTML=`
+      <div class="side-price-head">${cat.category} — цены</div>
+      ${cat.items.slice(0,4).map(it=>`<div class="side-prow"><span class="side-psvc">${it.service}</span><span class="side-pval">${it.price}</span></div>`).join('')}
+      <div style="padding:12px 18px"><a href="../prices.html" class="btn btn-outline btn-sm" style="width:100%;justify-content:center">Полный прайс →</a></div>`;
+  }
+
+  // Other services
+  document.getElementById('other').innerHTML=d.services.filter(s=>s.id!==svc.id).slice(0,5).map(s=>`
+    <a href="${s.file}" class="other-link"><span>${s.icon}</span>${s.title}<span class="other-link-arrow">›</span></a>`).join('');
+
+  // Doctors
+  document.getElementById('doc-row').innerHTML=d.doctors.map((dc,i)=>`
+    <div class="doctor-card reveal d${i+1}">
+      <div class="doc-photo-wrap"><img src="${dc.photo}" alt="${dc.alt}" class="doctor-photo" loading="lazy"></div>
+      <div class="doctor-info">
+        <div class="doctor-name">${dc.name}</div>
+        <div class="doctor-role">${dc.role}</div>
+        <div class="doctor-exp">🎓 Опыт: ${dc.experience}</div>
+        <div class="doctor-specs">${dc.specializations.map(sp=>`<span class="doctor-spec">${sp}</span>`).join('')}</div>
+      </div>
+    </div>`).join('');
+
+  initPage('services');
+});
+
+function toggleFaq(i){
+  document.getElementById(`fb${i}`).classList.toggle('open');
+  document.getElementById(`fa${i}`).classList.toggle('open');
+}
+</script>
+</body>
+</html>

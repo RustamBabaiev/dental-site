@@ -1,6 +1,7 @@
 // ============================================================
 // SITE_DATA — единый конфиг стоматологической клиники
-// Все тексты, контакты, услуги, врачи, цены — здесь
+// ФИX: убран дублирующий UTILS (он теперь только в shared.js)
+// ФИX: исправлены пути к страницам услуг (services/...)
 // ============================================================
 
 const SITE_DATA = {
@@ -39,9 +40,9 @@ const SITE_DATA = {
     phone: "+7 (495) 123-45-67",
     phoneRaw: "+74951234567",
     email: "info@stomaprime.ru",
-    whatsapp: "+79991234567",   // номер для WhatsApp (без +)
+    whatsapp: "+79991234567",
     whatsappMessage: "Здравствуйте! Хочу записаться на приём.",
-    telegram: "@stomaprime",     // username телеграм
+    telegram: "@stomaprime",
     telegramLink: "https://t.me/stomaprime",
     address: "г. Москва, ул. Лесная, д. 42, офис 301",
     metroStation: "м. Белорусская",
@@ -53,49 +54,34 @@ const SITE_DATA = {
 
   // ─── СОЦИАЛЬНЫЕ СЕТИ ─────────────────────────────────────
   socials: {
-    vk: "https://vk.com/stomaprime",
+    vk:      "https://vk.com/stomaprime",
     youtube: "https://youtube.com/@stomaprime",
-    rutube: "https://rutube.ru/channel/stomaprime",
-    ok: "https://ok.ru/stomaprime",
-    dzen: "https://dzen.ru/stomaprime",
-    youtubeChannelId: "", // YouTube Channel ID для виджета
+    rutube:  "https://rutube.ru/channel/stomaprime",
+    ok:      "https://ok.ru/stomaprime",
+    dzen:    "https://dzen.ru/stomaprime",
+    youtubeChannelId: "",
   },
 
   // ─── API / ИНТЕГРАЦИИ ────────────────────────────────────
   api: {
-    // Яндекс.Метрика
-    yandexMetrikaId: "", // например: "12345678"
-
-    // Яндекс.Карты
-    yandexMapsApiKey: "", // вставить API-ключ Яндекс.Карт
-
-    // Telegram Bot для уведомлений о заявках
-    telegramBotToken: "", // токен бота от @BotFather
-    telegramChatId:   "", // chat_id куда приходят заявки
-
-    // Email уведомления
+    yandexMetrikaId:   "",
+    yandexMapsApiKey:  "",
+    telegramBotToken:  "",
+    telegramChatId:    "",
     notificationEmail: "info@stomaprime.ru",
-
-    // Cloudinary (хранение фото)
-    cloudinaryCloudName: "", // например: "stomaprime"
-
-    // Бесплатный коллтрекинг
+    cloudinaryCloudName: "",
     calltracking: {
-      provider: "callibri", // callibri.ru — есть бесплатный тариф
-      siteId: "",           // вставить ID сайта
+      provider: "callibri",
+      siteId:   "",
     },
-
-    // Бесплатный онлайн-чат
     chat: {
-      provider: "jivochat", // jivo.ru — бесплатный тариф
-      widgetId: "",         // вставить ID виджета
+      provider: "jivochat",
+      widgetId: "",
     },
-
-    // Google Tag Manager (опционально)
-    gtmId: "", // например: "GTM-XXXXXXX"
+    gtmId: "",
   },
 
-  // ─── HERO (главный экран) ─────────────────────────────────
+  // ─── HERO ─────────────────────────────────────────────────
   hero: {
     h1: "Стоматология в Москве",
     subtitle: "Современная клиника с опытными врачами. Безболезненное лечение, имплантация за 1 день, детский приём.",
@@ -112,6 +98,7 @@ const SITE_DATA = {
   },
 
   // ─── УСЛУГИ ───────────────────────────────────────────────
+  // ВАЖНО: file указывает на путь ОТНОСИТЕЛЬНО index.html
   services: [
     {
       id: "implantation",
@@ -119,7 +106,7 @@ const SITE_DATA = {
       shortDesc: "Восстановление зубов на импланты за 1–3 дня без съёмных протезов",
       icon: "🦷",
       image: "https://images.unsplash.com/photo-1588776814546-1ffbb5931e9e?w=600&q=80",
-      file: "implantation.html",
+      file: "services/implantation.html",
       seoTitle: "Имплантация зубов в Москве — цены, врачи | СтомаПрайм",
       seoDesc: "Имплантация зубов в Москве от 25 000 руб. Опытные хирурги-имплантологи, гарантия 5 лет. Запись онлайн.",
       h1: "Имплантация зубов в Москве",
@@ -138,7 +125,7 @@ const SITE_DATA = {
       shortDesc: "Металлические, керамические и сапфировые брекеты, элайнеры",
       icon: "😁",
       image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80",
-      file: "braces.html",
+      file: "services/braces.html",
       seoTitle: "Брекеты в Москве — стоимость, виды | СтомаПрайм",
       seoDesc: "Установка брекетов в Москве: металлические, керамические, сапфировые. Консультация ортодонта бесплатно.",
       h1: "Брекеты и ортодонтическое лечение в Москве",
@@ -157,7 +144,7 @@ const SITE_DATA = {
       shortDesc: "Лечение зубов у детей без страха и боли, игровой подход",
       icon: "🧒",
       image: "https://images.unsplash.com/photo-1588776814546-1ffbb5931e9e?w=600&q=80",
-      file: "children.html",
+      file: "services/children.html",
       seoTitle: "Детская стоматология в Москве | СтомаПрайм",
       seoDesc: "Лечение молочных зубов у детей в Москве. Добрые детские стоматологи, без боли и страха. Запись онлайн.",
       h1: "Детская стоматология в Москве",
@@ -176,7 +163,7 @@ const SITE_DATA = {
       shortDesc: "Профессиональное отбеливание до 10 тонов за один визит",
       icon: "✨",
       image: "https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?w=600&q=80",
-      file: "whitening.html",
+      file: "services/whitening.html",
       seoTitle: "Отбеливание зубов в Москве — цены | СтомаПрайм",
       seoDesc: "Профессиональное отбеливание зубов в Москве. Zoom 4, Beyond, домашние системы. От 8 000 руб.",
       h1: "Отбеливание зубов в Москве",
@@ -195,7 +182,7 @@ const SITE_DATA = {
       shortDesc: "Безболезненное пломбирование зубов, фотополимерные пломбы",
       icon: "🔬",
       image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&q=80",
-      file: "caries.html",
+      file: "services/caries.html",
       seoTitle: "Лечение кариеса в Москве — цены | СтомаПрайм",
       seoDesc: "Безболезненное лечение кариеса в Москве. Световые пломбы, микроскоп, гарантия. От 3 500 руб.",
       h1: "Лечение кариеса в Москве",
@@ -214,7 +201,7 @@ const SITE_DATA = {
       shortDesc: "Коронки, виниры, мосты, съёмные и несъёмные протезы",
       icon: "👑",
       image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80",
-      file: "prosthetics.html",
+      file: "services/prosthetics.html",
       seoTitle: "Протезирование зубов в Москве — цены | СтомаПрайм",
       seoDesc: "Протезирование зубов в Москве: коронки, виниры, мосты, съёмные протезы. Гарантия 3 года.",
       h1: "Протезирование зубов в Москве",
@@ -233,7 +220,7 @@ const SITE_DATA = {
       shortDesc: "Ультразвуковая чистка, Air Flow, удаление налёта и камня",
       icon: "🪥",
       image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80",
-      file: "cleaning.html",
+      file: "services/cleaning.html",
       seoTitle: "Профессиональная чистка зубов в Москве | СтомаПрайм",
       seoDesc: "Профессиональная гигиена полости рта в Москве. Ультразвук + Air Flow. От 4 500 руб. Запись онлайн.",
       h1: "Профессиональная чистка зубов в Москве",
@@ -252,7 +239,7 @@ const SITE_DATA = {
       shortDesc: "Удаление зубов, вскрытие абсцессов, операции на дёснах",
       icon: "⚕️",
       image: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&q=80",
-      file: "surgery.html",
+      file: "services/surgery.html",
       seoTitle: "Хирургическая стоматология в Москве | СтомаПрайм",
       seoDesc: "Удаление зубов и хирургическое лечение в Москве. Безболезненно, быстро. Запись онлайн.",
       h1: "Хирургическая стоматология в Москве",
@@ -415,60 +402,37 @@ const SITE_DATA = {
     title: "Запишитесь на приём",
     subtitle: "Оставьте заявку, и мы перезвоним вам в течение 15 минут",
     fields: {
-      name: "Ваше имя",
-      phone: "Номер телефона",
+      name:    "Ваше имя",
+      phone:   "Номер телефона",
       service: "Выберите услугу",
-      doctor: "Выберите врача (необязательно)",
+      doctor:  "Выберите врача (необязательно)",
       message: "Комментарий (необязательно)",
     },
-    submitText: "Записаться на приём",
+    submitText:     "Записаться на приём",
     successMessage: "Спасибо! Мы свяжемся с вами в течение 15 минут.",
-    // Куда отправляется форма: 'telegram' | 'email' | 'both'
     submitTo: "telegram",
   },
 
   // ─── КАРТА ────────────────────────────────────────────────
   map: {
-    title: "Как нас найти",
+    title:   "Как нас найти",
     address: "г. Москва, ул. Лесная, д. 42",
-    metro: "м. Белорусская, 5 минут пешком",
+    metro:   "м. Белорусская, 5 минут пешком",
     parking: "Бесплатная парковка для пациентов",
-    // Яндекс.Карты embed URL (заменить после получения API-ключа)
     embedUrl: "https://yandex.ru/map-widget/v1/?ll=37.582%2C55.775&z=16&pt=37.582,55.775,pm2rdl",
   },
 
   // ─── ФУТЕР ────────────────────────────────────────────────
   footer: {
     description: "Современная стоматологическая клиника в Москве. Безболезненное лечение, опытные врачи, гарантия качества.",
-    copyright: "© 2025 СтомаПрайм. Все права защищены.",
-    disclaimer: "Имеются противопоказания. Необходима консультация специалиста.",
-    license: "Лицензия № ЛО-77-01-023456",
+    copyright:   "© 2025 СтомаПрайм. Все права защищены.",
+    disclaimer:  "Имеются противопоказания. Необходима консультация специалиста.",
+    license:     "Лицензия № ЛО-77-01-023456",
     privacyPolicy: "Политика конфиденциальности",
-    oferta: "Публичная оферта",
+    oferta:        "Публичная оферта",
   },
 
 };
 
-// ─── УТИЛИТЫ ─────────────────────────────────────────────────
-const UTILS = {
-  whatsappLink: () => `https://wa.me/${SITE_DATA.contacts.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent(SITE_DATA.contacts.whatsappMessage)}`,
-  phoneLink: () => `tel:${SITE_DATA.contacts.phoneRaw}`,
-  emailLink: () => `mailto:${SITE_DATA.contacts.email}`,
-
-  // Отправка формы в Telegram
-  sendToTelegram: async (formData) => {
-    const token = SITE_DATA.api.telegramBotToken;
-    const chatId = SITE_DATA.api.telegramChatId;
-    if (!token || !chatId) return false;
-    const text = `🦷 *Новая заявка с сайта ${SITE_DATA.general.clinicName}*\n\n👤 Имя: ${formData.name}\n📞 Телефон: ${formData.phone}\n🔧 Услуга: ${formData.service || '—'}\n💬 Комментарий: ${formData.message || '—'}`;
-    const url = `https://api.telegram.org/bot${token}/sendMessage`;
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: chatId, text, parse_mode: "Markdown" }),
-      });
-      return res.ok;
-    } catch { return false; }
-  },
-};
+// ─── КОНЕЦ ФАЙЛА ──────────────────────────────────────────────
+// UTILS объявлен в shared.js — НЕ дублировать здесь!
