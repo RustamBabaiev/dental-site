@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="meta-title">Услуга | СтомаПрайм</title>
+  <meta name="description" id="meta-desc" content="">
+  <link rel="canonical" id="canonical" href="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 60%,#f0fdf4 100%);
+      padding: 56px 0 0;
+      overflow: hidden;
+    }
+    .page-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+    }
+    @media(max-width:768px){ .page-hero-inner{grid-template-columns:1fr} }
+    .page-hero h1 { font-family:var(--font-display); font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:700; margin-bottom:14px; line-height:1.15; }
+    .page-hero-desc { font-size:1rem; color:var(--text-muted); line-height:1.7; margin-bottom:28px; }
+    .page-hero-btns { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:40px; }
+    .hero-service-img {
+      width:100%; height:380px; object-fit:cover; border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+      box-shadow:var(--shadow-lg);
+    }
+    @media(max-width:768px){ .hero-service-img{ height:220px; border-radius:var(--radius-lg);} }
+
+    .service-layout {
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:36px;
+      align-items:start;
+    }
+    @media(max-width:900px){ .service-layout{grid-template-columns:1fr} }
+
+    .service-sticky {
+      position:sticky;
+      top:90px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .benefit-list { display:flex; flex-direction:column; gap:12px; }
+    .benefit-item {
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      padding:16px;
+      background:white;
+      border-radius:var(--radius-sm);
+      border:1px solid var(--border-light);
+    }
+    .benefit-num {
+      width:32px; height:32px; min-width:32px;
+      background:var(--primary-light);
+      color:var(--primary-dark);
+      border-radius:8px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:.8rem; font-weight:800;
+    }
+    .benefit-text { font-size:.9rem; color:var(--text-muted); line-height:1.6; }
+    .benefit-text strong { display:block; color:var(--text); margin-bottom:2px; font-size:.92rem; }
+
+    .sidebar-card {
+      background:white;
+      border-radius:var(--radius);
+      border:1px solid var(--border-light);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .sidebar-card-header {
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      padding:20px 24px;
+      color:white;
+    }
+    .sidebar-card-header h3 { font-family:var(--font-display); font-size:1.1rem; margin-bottom:4px; }
+    .sidebar-card-header p { font-size:.82rem; opacity:.9; }
+    .sidebar-card-body { padding:20px 24px; display:flex; flex-direction:column; gap:12px; }
+
+    .price-preview {
+      background:var(--bg-soft);
+      border-radius:var(--radius);
+      border:1px solid var(--border-light);
+      overflow:hidden;
+    }
+    .price-preview-header {
+      padding:14px 20px;
+      background:white;
+      border-bottom:1px solid var(--border-light);
+      font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--text-light);
+    }
+    .price-preview-row {
+      display:flex; justify-content:space-between; align-items:center;
+      padding:12px 20px;
+      border-bottom:1px solid var(--border-light);
+      gap:12px;
+    }
+    .price-preview-row:last-child{border-bottom:none}
+    .price-preview-service{font-size:.85rem;color:var(--text)}
+    .price-preview-val{font-size:.85rem;font-weight:700;color:var(--primary-dark);white-space:nowrap}
+
+    .other-services{display:flex;flex-direction:column;gap:8px}
+    .other-service-link {
+      display:flex; align-items:center; gap:10px;
+      padding:12px 16px;
+      background:white;
+      border-radius:var(--radius-sm);
+      border:1px solid var(--border-light);
+      font-size:.88rem; font-weight:600; color:var(--text-muted);
+      transition:var(--transition);
+    }
+    .other-service-link:hover{color:var(--primary);background:var(--primary-light);border-color:var(--primary-light)}
+    .other-service-link .svc-icon{font-size:1rem}
+    .other-service-link .svc-arrow{margin-left:auto;color:var(--text-light)}
+
+    .steps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+    .step-card{
+      background:white;
+      border-radius:var(--radius);
+      padding:24px 20px;
+      border:1px solid var(--border-light);
+      box-shadow:var(--shadow-sm);
+      text-align:center;
+    }
+    .step-num{
+      width:44px;height:44px;
+      background:linear-gradient(135deg,var(--primary),var(--accent));
+      color:white;
+      border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.1rem;font-weight:800;
+      margin:0 auto 14px;
+    }
+    .step-title{font-size:.92rem;font-weight:700;margin-bottom:6px}
+    .step-desc{font-size:.8rem;color:var(--text-muted);line-height:1.6}
+
+    .faq-item{
+      background:white;
+      border-radius:var(--radius-sm);
+      border:1px solid var(--border-light);
+      overflow:hidden;
+      margin-bottom:10px;
+    }
+    .faq-q{
+      padding:16px 20px;
+      font-size:.92rem;font-weight:700;
+      cursor:pointer;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;
+      transition:var(--transition);
+    }
+    .faq-q:hover{color:var(--primary)}
+    .faq-toggle{font-size:.9rem;color:var(--text-muted);transition:var(--transition)}
+    .faq-toggle.open{transform:rotate(180deg)}
+    .faq-a{
+      padding:0 20px;
+      font-size:.88rem;color:var(--text-muted);line-height:1.7;
+      max-height:0;overflow:hidden;transition:all .3s ease;
+    }
+    .faq-a.open{max-height:200px;padding:0 20px 16px}
+  </style>
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="../index.html">Главная</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="../index.html#services">Услуги</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current" id="bc-current"></span>
+      </nav>
+      <div class="page-hero-inner">
+        <div>
+          <div class="section-label" id="hero-label"></div>
+          <h1 id="hero-h1"></h1>
+          <p class="page-hero-desc" id="hero-desc"></p>
+          <div class="page-hero-btns">
+            <a href="#service-form" class="btn btn-primary btn-lg">Записаться на консультацию</a>
+            <a href="#" class="btn btn-wa btn-lg" id="hero-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+          </div>
+        </div>
+        <div>
+          <img id="hero-img" src="" alt="" class="hero-service-img" loading="eager">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="service-layout">
+        <div>
+
+          <!-- Benefits -->
+          <div class="section-header">
+            <div class="section-label">Наши преимущества</div>
+            <h2 class="section-title" id="benefits-title">Почему выбирают нас</h2>
+            <div class="divider"></div>
+          </div>
+          <div class="benefit-list" id="benefit-list"></div>
+
+          <!-- Steps -->
+          <div class="section-header" style="margin-top:48px">
+            <div class="section-label">Этапы лечения</div>
+            <h2 class="section-title">Как проходит приём</h2>
+            <div class="divider"></div>
+          </div>
+          <div class="steps-grid" id="steps-grid"></div>
+
+          <!-- FAQ -->
+          <div class="section-header" style="margin-top:48px">
+            <div class="section-label">Вопросы и ответы</div>
+            <h2 class="section-title">Часто спрашивают</h2>
+            <div class="divider"></div>
+          </div>
+          <div id="faq-list"></div>
+
+        </div>
+        <div class="service-sticky">
+
+          <!-- Form card -->
+          <div class="sidebar-card" id="service-form">
+            <div class="sidebar-card-header">
+              <h3>Записаться на приём</h3>
+              <p>Ответим в течение 15 минут</p>
+            </div>
+            <div class="sidebar-card-body" id="sidebar-form"></div>
+          </div>
+
+          <!-- Price preview -->
+          <div class="price-preview" id="price-preview"></div>
+
+          <!-- Other services -->
+          <div style="background:white;border-radius:var(--radius);border:1px solid var(--border-light);overflow:hidden">
+            <div style="padding:14px 20px;border-bottom:1px solid var(--border-light);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-light)">Другие услуги</div>
+            <div style="padding:12px" class="other-services" id="other-services"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctors CTA -->
+  <section class="section section-bg">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-label">Наши специалисты</div>
+        <h2 class="section-title">Врачи по этой услуге</h2>
+        <div class="divider center"></div>
+      </div>
+      <div class="grid-4" id="related-doctors"></div>
+      <div style="text-align:center;margin-top:32px">
+        <a href="../doctors.html" class="btn btn-outline btn-lg">Все врачи →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="../config.js"></script>
+<script src="../shared.js"></script>
+<script>
+// Get current service ID from filename
+const filename = window.location.pathname.split('/').pop().replace('.html','');
+
+const SERVICE_STEPS = {
+  default: [
+    { num:'1', title:'Консультация', desc:'Осмотр, рентген, составление плана лечения' },
+    { num:'2', title:'Анестезия', desc:'Безболезненное обезболивание современными препаратами' },
+    { num:'3', title:'Процедура', desc:'Выполнение лечения по утверждённому плану' },
+    { num:'4', title:'Контроль', desc:'Рекомендации и контрольный осмотр через месяц' },
+  ],
+  implantation: [
+    { num:'1', title:'КТ и консультация', desc:'Компьютерная томография, планирование имплантации' },
+    { num:'2', title:'Установка импланта', desc:'Операция под анестезией, занимает 40–60 минут' },
+    { num:'3', title:'Заживление', desc:'3–6 месяцев для надёжного приживления импланта' },
+    { num:'4', title:'Коронка', desc:'Изготовление и установка постоянной коронки' },
+  ],
+  braces: [
+    { num:'1', title:'Консультация', desc:'Диагностика прикуса, снятие слепков, фото' },
+    { num:'2', title:'Установка', desc:'Фиксация брекет-системы, занимает около 2 часов' },
+    { num:'3', title:'Коррекция', desc:'Плановые визиты каждые 4–6 недель' },
+    { num:'4', title:'Ретенция', desc:'Установка ретейнеров после снятия брекетов' },
+  ],
+};
+
+const FAQS = {
+  default: [
+    { q:'Больно ли делать процедуру?', a:'Нет. Мы используем современные анестетики, которые обеспечивают полную безболезненность во время лечения.' },
+    { q:'Сколько стоит процедура?', a:'Стоимость зависит от сложности и объёма лечения. Точную цену называем после осмотра на консультации.' },
+    { q:'Как долго длится лечение?', a:'Большинство процедур выполняется за 1 визит. Сложные случаи требуют нескольких посещений.' },
+    { q:'Есть ли гарантия?', a:'Да. Мы даём гарантию на все виды лечения. Подробности уточняйте у врача на консультации.' },
+  ],
+  implantation: [
+    { q:'Больно ли делать имплантацию?', a:'Нет. Операция проходит под местной анестезией. После операции возможен небольшой дискомфорт 2–3 дня.' },
+    { q:'Сколько служит имплант?', a:'При правильном уходе — пожизненно. Мы даём гарантию приживаемости 5 лет.' },
+    { q:'Можно ли поставить имплант сразу после удаления?', a:'Да, это называется «немедленная имплантация». Применяется при определённых условиях.' },
+    { q:'Какие импланты вы используете?', a:'Nobel Biocare (Швейцария), Straumann (Швейцария), Osstem (Корея) — только проверенные производители.' },
+  ],
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const d = SITE_DATA;
+
+  // Find service
+  const svc = d.services.find(s => s.id === filename) || d.services[0];
+
+  // SEO
+  document.getElementById('meta-title').textContent = svc.seoTitle;
+  document.getElementById('meta-desc').content = svc.seoDesc;
+  document.getElementById('canonical').href = svc.file;
+
+  // Hero
+  document.getElementById('bc-current').textContent = svc.title;
+  document.getElementById('hero-label').textContent = svc.title;
+  document.getElementById('hero-h1').textContent = svc.h1;
+  document.getElementById('hero-desc').textContent = svc.description;
+  document.getElementById('hero-img').src = svc.image;
+  document.getElementById('hero-img').alt = svc.h1;
+  document.getElementById('hero-wa').href = UTILS.whatsappLink();
+  document.getElementById('benefits-title').textContent = `Преимущества нашей ${svc.title.toLowerCase()}`;
+
+  // Benefits
+  document.getElementById('benefit-list').innerHTML = svc.benefits.map((b, i) => `
+    <div class="benefit-item">
+      <div class="benefit-num">${i + 1}</div>
+      <div class="benefit-text"><strong>${b}</strong></div>
+    </div>
+  `).join('');
+
+  // Steps
+  const steps = SERVICE_STEPS[svc.id] || SERVICE_STEPS.default;
+  document.getElementById('steps-grid').innerHTML = steps.map(st => `
+    <div class="step-card">
+      <div class="step-num">${st.num}</div>
+      <div class="step-title">${st.title}</div>
+      <div class="step-desc">${st.desc}</div>
+    </div>
+  `).join('');
+
+  // FAQ
+  const faqs = FAQS[svc.id] || FAQS.default;
+  document.getElementById('faq-list').innerHTML = faqs.map((faq, i) => `
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(${i})">
+        ${faq.q}
+        <span class="faq-toggle" id="faq-toggle-${i}">▼</span>
+      </div>
+      <div class="faq-a" id="faq-a-${i}">${faq.a}</div>
+    </div>
+  `).join('');
+
+  // Sidebar form (compact)
+  document.getElementById('sidebar-form').innerHTML = `
+    <form id="service-booking-form" novalidate>
+      <div class="form-group"><input name="name" type="text" class="form-input" placeholder="Ваше имя" required></div>
+      <div class="form-group"><input name="phone" type="tel" class="form-input" placeholder="+7 (___) ___-__-__" required></div>
+      <input type="hidden" name="service" value="${svc.title}">
+      <button type="submit" class="btn btn-primary" style="width:100%">Записаться</button>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <a href="${UTILS.whatsappLink()}" class="btn btn-wa btn-sm" style="flex:1;justify-content:center" target="_blank">💬 WA</a>
+        <a href="${d.contacts.telegramLink}" class="btn btn-tg btn-sm" style="flex:1;justify-content:center" target="_blank">✈️ TG</a>
+      </div>
+    </form>
+  `;
+  document.getElementById('service-booking-form').addEventListener('submit', (e) => handleFormSubmit(e, document.getElementById('service-booking-form')));
+
+  // Price preview for this service category
+  const catMap = { implantation:'Имплантация', braces:'Ортодонтия', cleaning:'Гигиена и профилактика', whitening:'Гигиена и профилактика', caries:'Терапия', prosthetics:'Терапия', children:'Терапия', surgery:'Хирургия' };
+  const catName = catMap[svc.id] || 'Терапия';
+  const cat = d.prices.find(p => p.category === catName);
+  if (cat) {
+    document.getElementById('price-preview').innerHTML = `
+      <div class="price-preview-header">${cat.category} — цены</div>
+      ${cat.items.slice(0, 4).map(item => `
+        <div class="price-preview-row">
+          <span class="price-preview-service">${item.service}</span>
+          <span class="price-preview-val">${item.price}</span>
+        </div>
+      `).join('')}
+      <div style="padding:12px 20px">
+        <a href="../prices.html" class="btn btn-outline btn-sm" style="width:100%;justify-content:center">Полный прайс →</a>
+      </div>
+    `;
+  }
+
+  // Other services
+  document.getElementById('other-services').innerHTML = d.services
+    .filter(s => s.id !== svc.id)
+    .slice(0, 5)
+    .map(s => `
+      <a href="${s.file}" class="other-service-link">
+        <span class="svc-icon">${s.icon}</span>
+        ${s.title}
+        <span class="svc-arrow">›</span>
+      </a>
+    `).join('');
+
+  // Related doctors
+  document.getElementById('related-doctors').innerHTML = d.doctors.map(doc => `
+    <div class="doctor-card">
+      <img src="${doc.photo}" alt="${doc.alt}" class="doctor-photo" loading="lazy">
+      <div class="doctor-info">
+        <div class="doctor-name">${doc.name}</div>
+        <div class="doctor-role">${doc.role}</div>
+        <div class="doctor-exp">Опыт: ${doc.experience}</div>
+        <div class="doctor-specs">${doc.specializations.map(sp => `<span class="doctor-spec">${sp}</span>`).join('')}</div>
+      </div>
+    </div>
+  `).join('');
+
+  initPage('services');
+});
+
+function toggleFaq(i) {
+  const a = document.getElementById(`faq-a-${i}`);
+  const t = document.getElementById(`faq-toggle-${i}`);
+  a.classList.toggle('open');
+  t.classList.toggle('open');
+}
+</script>
+</body>
+</html>

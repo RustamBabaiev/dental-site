@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="meta-title">Контакты стоматологии СтомаПрайм в Москве</title>
+  <meta name="description" content="Адрес и контакты стоматологической клиники СтомаПрайм в Москве. Запись по телефону, WhatsApp, Telegram. Удобное расположение рядом с метро.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .page-hero { background: linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 60%,#f0fdf4 100%); padding: 56px 0 48px; }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.6rem); font-weight: 700; margin-bottom: 12px; }
+    .page-hero p { font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.7; }
+
+    .contacts-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media(max-width: 900px) { .contacts-layout { grid-template-columns: 1fr; } }
+
+    .contact-card {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .contact-card-header {
+      padding: 20px 24px;
+      background: var(--primary-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .contact-card-header h3 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--primary-dark); }
+    .contact-card-body { padding: 0; }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border-light);
+      transition: var(--transition);
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row:hover { background: var(--bg-soft); }
+    .contact-row-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .icon-blue { background: var(--primary-light); }
+    .icon-green { background: #dcfce7; }
+    .icon-teal { background: var(--teal-light); }
+    .contact-row-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--text-light); margin-bottom: 2px; }
+    .contact-row-value { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .contact-row-value a { color: var(--primary); }
+
+    .big-map { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); height: 420px; }
+    .big-map iframe { width: 100%; height: 100%; border: none; }
+
+    .how-to-find {
+      background: var(--bg-soft);
+      border-radius: var(--radius);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .route-item { display: flex; align-items: flex-start; gap: 14px; }
+    .route-icon {
+      width: 40px; height: 40px; min-width: 40px;
+      background: white;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .route-text strong { display: block; font-size: .9rem; margin-bottom: 2px; }
+    .route-text span { font-size: .82rem; color: var(--text-muted); }
+
+    .social-big {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+    }
+    .social-big-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 12px;
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      color: var(--text-muted);
+      font-size: .82rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .social-big-item:hover { box-shadow: var(--shadow); transform: translateY(-2px); color: var(--primary); }
+    .social-big-item svg { width: 28px; height: 28px; }
+  </style>
+</head>
+<body>
+<header class="site-header" id="site-header"></header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="index.html">Главная</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Контакты</span>
+      </nav>
+      <div class="section-label">Мы здесь</div>
+      <h1>Контакты клиники</h1>
+      <p>Находимся в центре Москвы, в 5 минутах от метро. Работаем ежедневно.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="contacts-layout">
+        <div style="display:flex;flex-direction:column;gap:20px">
+
+          <div class="contact-card">
+            <div class="contact-card-header"><h3>Адрес и время работы</h3></div>
+            <div class="contact-card-body" id="contact-main"></div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-header"><h3>Связаться с нами</h3></div>
+            <div class="contact-card-body" id="contact-channels"></div>
+          </div>
+
+          <div class="how-to-find">
+            <div style="font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--text-light);margin-bottom:4px">Как добраться</div>
+            <div class="route-item">
+              <div class="route-icon">🚇</div>
+              <div class="route-text">
+                <strong>На метро</strong>
+                <span id="route-metro"></span>
+              </div>
+            </div>
+            <div class="route-item">
+              <div class="route-icon">🚗</div>
+              <div class="route-text">
+                <strong>На автомобиле</strong>
+                <span>Бесплатная парковка во дворе для пациентов клиники</span>
+              </div>
+            </div>
+            <div class="route-item">
+              <div class="route-icon">🚌</div>
+              <div class="route-text">
+                <strong>На автобусе</strong>
+                <span>Остановка «Лесная улица» — маршруты 12, 23, 45</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div>
+          <div class="big-map" id="big-map"></div>
+          <div style="margin-top:16px;font-size:.82rem;color:var(--text-muted);text-align:center" id="map-address"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-bg">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-label">Мы в соцсетях</div>
+        <h2 class="section-title">Следите за нами</h2>
+        <div class="divider center"></div>
+        <p class="section-subtitle">Советы по уходу за зубами, акции и новости клиники</p>
+      </div>
+      <div class="social-big" id="socials-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="form-section">
+    <div class="container" style="max-width:580px">
+      <div class="section-header center">
+        <div class="section-label">Запись онлайн</div>
+        <h2 class="section-title">Записаться на приём</h2>
+        <div class="divider center"></div>
+      </div>
+      <div style="background:white;border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-lg);border:1px solid var(--border-light)" id="form-box"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="config.js"></script>
+<script src="shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const d = SITE_DATA;
+  document.getElementById('meta-title').textContent = `Контакты | ${d.general.clinicName}`;
+
+  document.getElementById('contact-main').innerHTML = `
+    <div class="contact-row"><div class="contact-row-icon icon-blue">📍</div><div><div class="contact-row-label">Адрес</div><div class="contact-row-value">${d.contacts.address}</div></div></div>
+    <div class="contact-row"><div class="contact-row-icon icon-blue">🚇</div><div><div class="contact-row-label">Метро</div><div class="contact-row-value">${d.contacts.metroStation}</div></div></div>
+    <div class="contact-row"><div class="contact-row-icon icon-blue">⏰</div><div><div class="contact-row-label">Режим работы</div><div class="contact-row-value">${d.general.workingHours}</div></div></div>
+  `;
+
+  document.getElementById('contact-channels').innerHTML = `
+    <div class="contact-row"><div class="contact-row-icon icon-blue">📞</div><div><div class="contact-row-label">Телефон</div><div class="contact-row-value"><a href="tel:${d.contacts.phoneRaw}">${d.contacts.phone}</a></div></div></div>
+    <div class="contact-row"><div class="contact-row-icon icon-blue">✉️</div><div><div class="contact-row-label">Email</div><div class="contact-row-value"><a href="mailto:${d.contacts.email}">${d.contacts.email}</a></div></div></div>
+    <div class="contact-row"><div class="contact-row-icon icon-green">💬</div><div><div class="contact-row-label">WhatsApp</div><div class="contact-row-value"><a href="${UTILS.whatsappLink()}" target="_blank">Написать в WhatsApp</a></div></div></div>
+    <div class="contact-row"><div class="contact-row-icon icon-teal">✈️</div><div><div class="contact-row-label">Telegram</div><div class="contact-row-value"><a href="${d.contacts.telegramLink}" target="_blank">${d.contacts.telegram}</a></div></div></div>
+  `;
+
+  document.getElementById('route-metro').textContent = `Выход из ${d.contacts.metroStation}, 5 минут пешком по улице Лесная в сторону дома 42`;
+  document.getElementById('map-address').textContent = `📍 ${d.contacts.address}`;
+  document.getElementById('big-map').innerHTML = `<iframe src="${d.map.embedUrl}" allowfullscreen loading="lazy" title="Карта клиники"></iframe>`;
+
+  const s = d.socials;
+  const socials = [
+    { href: s.vk, label: 'ВКонтакте', icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.131-.427.131-.427s-.019-1.307.587-1.498c.597-.189 1.365 1.263 2.178 1.821.615.422 1.082.33 1.082.33l2.175-.03s1.137-.071.598-1.121c-.044-.083-.313-.666-1.608-1.883-1.356-1.274-1.174-1.068.459-3.271.999-1.333 1.398-2.146 1.273-2.494-.12-.332-.854-.244-.854-.244l-2.448.015s-.181-.025-.316.054c-.132.078-.216.26-.216.26s-.387 1.028-.903 1.903c-1.088 1.84-1.524 1.94-1.703 1.824-.414-.268-.311-1.075-.311-1.649 0-1.793.272-2.54-.529-2.733-.266-.064-.461-.106-1.141-.113-.872-.009-1.609.003-2.027.208-.278.135-.492.436-.361.453.162.021.528.099.722.363.252.341.243 1.107.243 1.107s.145 2.112-.337 2.373c-.331.179-.786-.187-1.761-1.854-.5-.861-.878-1.814-.878-1.814s-.072-.176-.202-.271c-.157-.114-.376-.15-.376-.15l-2.325.015s-.349.01-.477.162c-.114.135-.009.414-.009.414s1.822 4.261 3.881 6.409c1.89 1.973 4.04 1.842 4.04 1.842h.974z"/></svg>` },
+    { href: s.youtube, label: 'YouTube', icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>` },
+    { href: s.ok, label: 'Одноклассники', icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm5.5 9.5c-.56.98-1.63 1.63-2.85 1.63h-.15l1.85 2.07c.3.33.28.85-.05 1.15a.81.81 0 01-1.15-.05L12 17.8l-3.15 2.5a.81.81 0 01-1.15.05.81.81 0 01.05-1.15l1.85-2.07h-.15c-1.22 0-2.29-.65-2.85-1.63a.81.81 0 011.4-.82c.26.44.74.72 1.3.72h3.4c.56 0 1.04-.28 1.3-.72a.81.81 0 111.4.82z"/></svg>` },
+    { href: s.rutube, label: 'Rutube', icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm4.2 16.8L9.6 13.2v3.6H7.2V7.2h4.8c2.4 0 3.6 1.2 3.6 3 0 1.5-.9 2.6-2.4 2.9l3.6 3.7h-2.6zm-3.4-5.4h-1.2V9.6h1.2c1.2 0 1.8.5 1.8 1.2s-.6 1.6-1.8 1.6z"/></svg>` },
+    { href: s.dzen, label: 'Дзен', icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-.5 19.5C9.5 17 7 14.5 4.5 12.5 7 10.5 9.5 8 11.5 4.5c2 3.5 4.5 6 7 8-2.5 2-5 4.5-7 7z"/></svg>` },
+    { href: d.contacts.telegramLink, label: 'Telegram', icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 13.447l-2.95-.924c-.64-.203-.652-.64.136-.954l11.52-4.44c.537-.194 1.006.131.928.092z"/></svg>` },
+  ];
+
+  document.getElementById('socials-grid').innerHTML = socials.filter(s => s.href).map(s => `
+    <a href="${s.href}" class="social-big-item" target="_blank" rel="noopener">
+      ${s.icon}
+      ${s.label}
+    </a>
+  `).join('');
+
+  document.getElementById('form-box').innerHTML = getBookingFormHTML(false);
+  initPage('contacts');
+});
+</script>
+</body>
+</html>

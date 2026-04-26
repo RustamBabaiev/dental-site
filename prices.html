@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="meta-title">Цены на стоматологические услуги | СтомаПрайм Москва</title>
+  <meta name="description" content="Прайс-лист стоматологической клиники СтомаПрайм в Москве. Прозрачные цены на имплантацию, брекеты, лечение, чистку зубов. Рассрочка 0%.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 60%, #f0fdf4 100%);
+      padding: 56px 0 48px;
+    }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.6rem); font-weight: 700; margin-bottom: 12px; }
+    .page-hero p { font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.7; }
+
+    .prices-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    @media(max-width: 768px) { .prices-layout { grid-template-columns: 1fr; } }
+
+    .prices-sidebar {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      position: sticky;
+      top: 90px;
+    }
+    .sidebar-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      padding: 16px 20px 10px;
+    }
+    .sidebar-link {
+      display: block;
+      padding: 12px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-left: 3px solid transparent;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .sidebar-link:hover, .sidebar-link.active {
+      color: var(--primary);
+      background: var(--primary-light);
+      border-left-color: var(--primary);
+    }
+
+    .price-category {
+      background: white;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .cat-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      background: var(--bg-soft);
+    }
+    .cat-title { font-size: 1rem; font-weight: 700; color: var(--text); }
+    .cat-toggle { font-size: 1rem; color: var(--text-muted); transition: var(--transition); }
+    .cat-toggle.open { transform: rotate(180deg); }
+    .cat-body { padding: 0 24px; display: none; }
+    .cat-body.open { display: block; }
+    .price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border-light);
+      gap: 16px;
+    }
+    .price-row:last-child { border-bottom: none; }
+    .price-service { font-size: 0.9rem; color: var(--text); }
+    .price-value { font-size: 0.92rem; font-weight: 700; color: var(--primary-dark); white-space: nowrap; }
+
+    .installment-banner {
+      background: linear-gradient(135deg, #0ea5e9, #06b6d4);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .installment-banner h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 6px; }
+    .installment-banner p { font-size: 0.9rem; opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="index.html">Главная</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Цены</span>
+      </nav>
+      <div class="section-label">Прозрачные цены</div>
+      <h1>Стоимость услуг</h1>
+      <p>Честные цены без скрытых доплат. Окончательная стоимость определяется на консультации после осмотра.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="installment-banner">
+        <div>
+          <h3>Рассрочка 0% до 24 месяцев</h3>
+          <p>Оформим рассрочку прямо в клинике за 15 минут без справок</p>
+        </div>
+        <a href="#form-section" class="btn" style="background:white;color:var(--primary-dark);font-weight:700;flex-shrink:0">Записаться →</a>
+      </div>
+
+      <div class="prices-layout">
+        <div class="prices-sidebar" id="prices-sidebar">
+          <div class="sidebar-title">Разделы</div>
+        </div>
+        <div id="prices-content"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-bg" id="form-section">
+    <div class="container" style="max-width:580px">
+      <div class="section-header center">
+        <div class="section-label">Запись онлайн</div>
+        <h2 class="section-title">Узнайте точную стоимость</h2>
+        <div class="divider center"></div>
+        <p class="section-subtitle">Запишитесь на бесплатную консультацию — составим план и смету лечения</p>
+      </div>
+      <div style="background:white;border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-lg);border:1px solid var(--border-light)" id="form-box"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="config.js"></script>
+<script src="shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const d = SITE_DATA;
+  document.getElementById('meta-title').textContent = `Цены | ${d.general.clinicName}`;
+
+  // Sidebar
+  const sidebar = document.getElementById('prices-sidebar');
+  d.prices.forEach((cat, i) => {
+    const link = document.createElement('div');
+    link.className = `sidebar-link ${i === 0 ? 'active' : ''}`;
+    link.textContent = cat.category;
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      document.getElementById(`cat-${i}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    sidebar.appendChild(link);
+  });
+
+  // Price tables
+  document.getElementById('prices-content').innerHTML = d.prices.map((cat, i) => `
+    <div class="price-category" id="cat-${i}">
+      <div class="cat-header" onclick="toggleCat(${i})">
+        <div class="cat-title">${cat.category}</div>
+        <div class="cat-toggle open" id="toggle-${i}">▼</div>
+      </div>
+      <div class="cat-body open" id="body-${i}">
+        ${cat.items.map(item => `
+          <div class="price-row">
+            <span class="price-service">${item.service}</span>
+            <span class="price-value">${item.price}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('form-box').innerHTML = getBookingFormHTML(false);
+  initPage('prices');
+});
+
+function toggleCat(i) {
+  const body = document.getElementById(`body-${i}`);
+  const toggle = document.getElementById(`toggle-${i}`);
+  body.classList.toggle('open');
+  toggle.classList.toggle('open');
+}
+</script>
+</body>
+</html>

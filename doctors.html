@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="meta-title">Врачи стоматологической клиники СтомаПрайм</title>
+  <meta name="description" id="meta-desc" content="Опытные врачи-стоматологи клиники СтомаПрайм в Москве. Хирурги, ортодонты, терапевты, детские стоматологи с многолетним опытом.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 60%, #f0fdf4 100%);
+      padding: 56px 0 48px;
+    }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem,4vw,2.6rem); font-weight: 700; margin-bottom: 12px; }
+    .page-hero p { font-size: 1rem; color: var(--text-muted); max-width: 560px; line-height: 1.7; }
+
+    .doctor-full-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      transition: var(--transition);
+    }
+    .doctor-full-card:hover { box-shadow: var(--shadow-lg); }
+    @media(max-width: 700px) { .doctor-full-card { grid-template-columns: 1fr; } }
+    .doctor-full-photo {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+      object-position: top;
+    }
+    @media(max-width: 700px) { .doctor-full-photo { height: 260px; } }
+    .doctor-full-info { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+    .doctor-full-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text); }
+    .doctor-full-role { font-size: 0.9rem; font-weight: 700; color: var(--primary); }
+    .doctor-full-exp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-weight: 600;
+      width: fit-content;
+    }
+    .doctor-full-edu {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .doctor-full-specs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .doctor-full-spec {
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--teal-light);
+      color: #0f766e;
+      padding: 5px 12px;
+      border-radius: 99px;
+    }
+    .doctor-full-actions { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+
+    .cert-block {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      color: white;
+      text-align: center;
+    }
+    .cert-block h2 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 12px; }
+    .cert-block p { opacity: 0.9; max-width: 500px; margin: 0 auto 28px; line-height: 1.7; }
+    .cert-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .cert-stat { text-align: center; }
+    .cert-stat strong { display: block; font-size: 2rem; font-weight: 800; font-family: var(--font-display); }
+    .cert-stat span { font-size: 0.85rem; opacity: 0.8; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="index.html">Главная</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Наши врачи</span>
+      </nav>
+      <div class="section-label">Наша команда</div>
+      <h1>Врачи клиники</h1>
+      <p>Опытные специалисты с постоянным повышением квалификации. Каждый врач — эксперт в своей области.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;flex-direction:column;gap:28px" id="doctors-list"></div>
+    </div>
+  </section>
+
+  <section class="section section-bg">
+    <div class="container">
+      <div class="cert-block">
+        <h2>Сертифицированные специалисты</h2>
+        <p>Все врачи клиники имеют действующие сертификаты и регулярно проходят обучение на профильных конференциях</p>
+        <div class="cert-stats" id="cert-stats"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="form-section">
+    <div class="container" style="max-width:580px">
+      <div class="section-header center">
+        <div class="section-label">Запись онлайн</div>
+        <h2 class="section-title">Запишитесь к врачу</h2>
+        <div class="divider center"></div>
+      </div>
+      <div style="background:white;border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-lg);border:1px solid var(--border-light)" id="form-box"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="config.js"></script>
+<script src="shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const d = SITE_DATA;
+
+  document.getElementById('meta-title').textContent = `Врачи | ${d.general.clinicName}`;
+
+  document.getElementById('doctors-list').innerHTML = d.doctors.map(doc => `
+    <div class="doctor-full-card">
+      <img src="${doc.photo}" alt="${doc.alt}" class="doctor-full-photo" loading="lazy">
+      <div class="doctor-full-info">
+        <div class="doctor-full-name">${doc.name}</div>
+        <div class="doctor-full-role">${doc.role}</div>
+        <div class="doctor-full-exp">🎓 Опыт работы: ${doc.experience}</div>
+        <div class="doctor-full-edu">📚 ${doc.education}</div>
+        <div>
+          <div style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-light);margin-bottom:8px">Специализации:</div>
+          <div class="doctor-full-specs">
+            ${doc.specializations.map(sp => `<span class="doctor-full-spec">${sp}</span>`).join('')}
+          </div>
+        </div>
+        <div class="doctor-full-actions">
+          <a href="#form-section" class="btn btn-primary">Записаться</a>
+          <a href="${UTILS.whatsappLink()}" class="btn btn-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('cert-stats').innerHTML = `
+    <div class="cert-stat"><strong>${d.general.doctorsCount}</strong><span>специалиста</span></div>
+    <div class="cert-stat"><strong>${d.general.patientsCount}</strong><span>пациентов</span></div>
+    <div class="cert-stat"><strong>${new Date().getFullYear() - d.general.foundedYear}+</strong><span>лет работы</span></div>
+    <div class="cert-stat"><strong>${d.general.guaranteeYears} лет</strong><span>гарантия</span></div>
+  `;
+
+  document.getElementById('form-box').innerHTML = getBookingFormHTML(false);
+  initPage('doctors');
+});
+</script>
+</body>
+</html>
