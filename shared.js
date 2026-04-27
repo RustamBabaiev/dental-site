@@ -64,6 +64,7 @@ function renderHeader(activePage) {
   var el = document.getElementById('site-header');
   if (!el) return;
 
+  // Header содержит ТОЛЬКО шапку — без мобильного меню
   el.innerHTML =
     '<div class="header-inner">' +
       '<a href="index.html" class="logo">' + logoImg + '<span class="logo-text">Стома<span>Прайм</span></span></a>' +
@@ -74,15 +75,25 @@ function renderHeader(activePage) {
         '<a href="' + UTILS.whatsappLink() + '" class="btn btn-wa btn-sm" target="_blank" rel="noopener">' + SVG.wa + ' WhatsApp</a>' +
         '<button class="burger" id="sp-burger" aria-label="Меню" aria-expanded="false"><span></span><span></span><span></span></button>' +
       '</div>' +
-    '</div>' +
-    '<div class="mobile-menu" id="sp-menu">' +
-      mobileNav +
-      '<div class="mobile-menu-footer">' +
-        '<a href="' + UTILS.phoneLink() + '" class="btn btn-primary">📞 ' + d.contacts.phone + '</a>' +
-        '<a href="' + UTILS.whatsappLink() + '" class="btn btn-wa" target="_blank" rel="noopener">' + SVG.wa + ' WhatsApp</a>' +
-        '<a href="' + d.contacts.telegramLink + '" class="btn btn-tg" target="_blank" rel="noopener">' + SVG.tg + ' Telegram</a>' +
-      '</div>' +
     '</div>';
+
+  // КЛЮЧЕВОЙ ФИX: мобильное меню вставляем прямо в <body>, НЕ внутрь <header>
+  // backdrop-filter на header создаёт stacking context → всё внутри него перекрывается контентом страницы
+  // Вынося меню в body, оно гарантированно рендерится поверх всего
+  var existingMenu = document.getElementById('sp-menu');
+  if (existingMenu) existingMenu.remove();
+
+  var menuEl = document.createElement('div');
+  menuEl.className = 'mobile-menu';
+  menuEl.id = 'sp-menu';
+  menuEl.innerHTML =
+    mobileNav +
+    '<div class="mobile-menu-footer">' +
+      '<a href="' + UTILS.phoneLink() + '" class="btn btn-primary">📞 ' + d.contacts.phone + '</a>' +
+      '<a href="' + UTILS.whatsappLink() + '" class="btn btn-wa" target="_blank" rel="noopener">' + SVG.wa + ' WhatsApp</a>' +
+      '<a href="' + d.contacts.telegramLink + '" class="btn btn-tg" target="_blank" rel="noopener">' + SVG.tg + ' Telegram</a>' +
+    '</div>';
+  document.body.appendChild(menuEl);
 
   var burger = document.getElementById('sp-burger');
   var menu   = document.getElementById('sp-menu');

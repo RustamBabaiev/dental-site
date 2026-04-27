@@ -39,8 +39,8 @@ button{font-family:var(--font)}
 .accent-line{width:36px;height:3px;background:linear-gradient(90deg,var(--blue),var(--accent));border-radius:99px;margin:16px 0}
 .accent-line.c{margin:16px auto}.accent-line.w{width:60px}
 
-/* HEADER */
-.site-header{position:sticky;top:0;z-index:200;height:70px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(225,232,240,.6);transition:background var(--t),box-shadow var(--t)}
+/* HEADER — FIX: z-index подняли до 9998 чтобы header и меню были в одном stacking context */
+.site-header{position:sticky;top:0;z-index:9998;height:70px;background:rgba(255,255,255,.9);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(225,232,240,.6);transition:background var(--t),box-shadow var(--t)}
 .site-header.scrolled{background:rgba(255,255,255,.97);box-shadow:0 1px 0 var(--border-light),0 4px 20px rgba(12,22,40,.08)}
 .header-inner{max-width:var(--max-w);margin:0 auto;padding:0 var(--pad-x);height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;flex-shrink:0;transition:opacity var(--t-fast)}.logo:hover{opacity:.82}
@@ -65,8 +65,8 @@ button{font-family:var(--font)}
 @media(min-width:1024px){.burger{display:none}.nav-desktop{display:flex}}
 @media(max-width:1023px){.nav-desktop{display:none}}
 
-/* MOBILE MENU */
-.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:#fff;z-index:199;padding:8px 16px 32px;flex-direction:column;gap:0;overflow-y:auto;overflow-x:hidden;box-shadow:0 8px 32px rgba(12,22,40,.12)}
+/* MOBILE MENU — FIX: z-index 9999, hero overflow:hidden создаёт stacking context и перекрывал меню */
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;bottom:0;background:#fff;z-index:9999;padding:8px 16px 32px;flex-direction:column;gap:0;overflow-y:auto;overflow-x:hidden;box-shadow:0 8px 32px rgba(12,22,40,.12);isolation:isolate}
 .mobile-menu.open{display:flex;animation:menuIn .22s var(--ease-out) both}
 .mobile-menu a{display:block;font-size:1.05rem;font-weight:600;color:var(--text);padding:16px 14px;border-bottom:1px solid var(--border-faint);transition:color var(--t-fast),background var(--t-fast)}
 .mobile-menu a:hover,.mobile-menu a:active{color:var(--blue);background:var(--blue-light)}
@@ -85,6 +85,7 @@ button{font-family:var(--font)}
 .btn-xl{padding:16px 32px;font-size:1.05rem;border-radius:13px;font-weight:700}
 
 /* HERO — ГЛАВНАЯ */
+/* FIX: убран z-index с hero — он не нужен и создавал stacking context выше position:fixed меню */
 .hero{position:relative;padding:80px 0 72px;background:var(--bg-hero);overflow:hidden;min-height:calc(100vh - 70px);display:flex;align-items:center}
 .hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 75% 35%,rgba(37,99,235,.07) 0%,transparent 65%),radial-gradient(ellipse 55% 45% at 15% 70%,rgba(14,165,233,.05) 0%,transparent 60%)}
 .hero::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(37,99,235,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 30%,transparent 80%)}
