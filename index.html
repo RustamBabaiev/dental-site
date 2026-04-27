@@ -5,299 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title id="mt">СтомаПрайм — Стоматология в Москве</title>
   <meta name="description" id="md" content="">
-  <meta name="keywords"    id="mk" content="">
-  <meta property="og:title"       id="ot" content="">
+  <meta property="og:title" id="ot" content="">
   <meta property="og:description" id="od" content="">
-  <meta property="og:image"       id="oi" content="">
+  <meta property="og:image" id="oi" content="">
   <meta property="og:type" content="website">
-  <meta name="yandex-verification" id="yv" content="">
   <link rel="canonical" href="index.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
-<style>
-/* ═══ HERO ═══════════════════════════════════════════════════ */
-.hero {
-  position: relative;
-  min-height: calc(100vh - 70px);
-  display: flex; align-items: center;
-  padding: 80px 0;
-  background: #f7f9fd;
-  overflow: hidden;
-}
-/* Soft gradient mesh */
-.hero::before {
-  content:''; position:absolute; inset:0; pointer-events:none;
-  background:
-    radial-gradient(ellipse 70% 55% at 75% 35%, rgba(37,99,235,0.07) 0%, transparent 65%),
-    radial-gradient(ellipse 55% 45% at 15% 70%, rgba(14,165,233,0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 35% at 55% 5%,  rgba(13,148,136,0.04) 0%, transparent 55%);
-}
-/* Subtle grid lines */
-.hero::after {
-  content:''; position:absolute; inset:0; pointer-events:none;
-  background-image: linear-gradient(rgba(37,99,235,0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(37,99,235,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 80%);
-}
-.hero-wrap { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; position:relative; z-index:1; }
-@media(max-width:900px){.hero-wrap{grid-template-columns:1fr;gap:44px;}.hero-img-col{order:-1;}.hero{min-height:auto;padding:56px 0;}}
-
-/* Left col */
-.hero-pill {
-  display:inline-flex; align-items:center; gap:8px;
-  font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
-  color:#2563eb; background:#fff; padding:7px 16px; border-radius:99px;
-  border:1px solid #bfdbfe; box-shadow:0 2px 12px rgba(37,99,235,0.1);
-  margin-bottom:24px;
-}
-.hero-pill-dot { width:7px; height:7px; border-radius:50%; background:#2563eb; animation:hblink 2s ease-in-out infinite; }
-@keyframes hblink{0%,100%{opacity:1}50%{opacity:.25}}
-
-.hero-h1 {
-  font-family:'Outfit',sans-serif; font-weight:900; color:#0c1628;
-  font-size:clamp(2.6rem,5.5vw,4rem); line-height:1.05; letter-spacing:-0.045em;
-  margin-bottom:22px;
-}
-.hero-h1 em { font-style:normal; color:#2563eb; }
-.hero-sub { font-size:1.08rem; color:#4b5875; line-height:1.78; margin-bottom:38px; max-width:430px; }
-
-.hero-ctas { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:52px; }
-
-/* Trust bar */
-.hero-trust {
-  display:grid; grid-template-columns:repeat(4,1fr);
-  background:#fff; border-radius:16px; border:1px solid #e8eef6;
-  box-shadow:0 2px 16px rgba(12,22,40,0.07); overflow:hidden;
-}
-@media(max-width:600px){ .hero-trust{grid-template-columns:repeat(2,1fr);} }
-.trust-cell {
-  padding:18px 14px; text-align:center; border-right:1px solid #f0f4f8;
-  transition:background .2s;
-}
-.trust-cell:last-child{border-right:none;}
-.trust-cell:hover{background:#f8faff;}
-@media(max-width:600px){.trust-cell:nth-child(2){border-right:none;}.trust-cell:nth-child(3){border-top:1px solid #f0f4f8;border-right:1px solid #f0f4f8;}.trust-cell:nth-child(4){border-top:1px solid #f0f4f8;}}
-.trust-num { font-family:'Outfit',sans-serif; font-size:1.45rem; font-weight:900; color:#2563eb; letter-spacing:-0.04em; line-height:1; margin-bottom:5px; display:block; }
-.trust-txt { font-size:0.68rem; color:#8a9ab5; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; line-height:1.35; display:block; }
-
-/* Right col */
-.hero-img-col { position:relative; }
-.hero-img-frame {
-  position:relative; border-radius:28px; overflow:hidden;
-  box-shadow:0 24px 80px rgba(12,22,40,0.16), 0 8px 28px rgba(12,22,40,0.08);
-}
-.hero-img-frame img {
-  width:100%; height:520px; object-fit:cover; object-position:center 15%; display:block;
-  transition:transform 8s ease;
-}
-.hero-img-frame:hover img{transform:scale(1.03);}
-@media(max-width:900px){.hero-img-frame img{height:300px;}}
-
-/* Floating card */
-.hero-card {
-  position:absolute; bottom:28px; left:-24px;
-  background:#fff; border-radius:18px; padding:16px 20px;
-  display:flex; align-items:center; gap:14px;
-  box-shadow:0 16px 48px rgba(12,22,40,0.14); border:1px solid #f0f4f8;
-  animation:fcFloat 3.2s ease-in-out infinite;
-}
-@media(max-width:900px){.hero-card{left:12px;bottom:14px;}}
-@keyframes fcFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.hero-card-ico {
-  width:46px; height:46px; flex-shrink:0; border-radius:14px;
-  background:linear-gradient(135deg,#eff6ff,#e0f2fe);
-  display:flex; align-items:center; justify-content:center; font-size:1.4rem;
-}
-.hero-card-n { font-family:'Outfit',sans-serif; font-size:1.15rem; font-weight:900; color:#0c1628; line-height:1; margin-bottom:3px; }
-.hero-card-l { font-size:0.7rem; color:#8a9ab5; font-weight:500; }
-
-/* Top ribbon on image */
-.hero-ribbon {
-  position:absolute; top:20px; right:-14px;
-  background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff;
-  border-radius:14px; padding:13px 18px;
-  box-shadow:0 8px 28px rgba(37,99,235,0.35);
-  animation:fcFloat 3.8s .6s ease-in-out infinite;
-}
-@media(max-width:900px){.hero-ribbon{right:12px;top:12px;}}
-.hero-ribbon strong{display:block;font-size:.9rem;font-weight:800;font-family:'Outfit',sans-serif;}
-.hero-ribbon span{font-size:.68rem;opacity:.8;font-weight:500;}
-
-/* Decorative dots */
-.hero-dots{position:absolute;bottom:-16px;right:-8px;display:grid;grid-template-columns:repeat(5,1fr);gap:9px;opacity:.3;pointer-events:none;}
-.hero-dot{width:5px;height:5px;border-radius:50%;background:#2563eb;}
-
-/* ═══ STATS BAND ════════════════════════════════════════════ */
-.stats-band {
-  background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 45%,#0ea5e9 100%);
-  padding:60px 0;
-}
-.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
-@media(max-width:700px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
-.stat {
-  text-align:center; padding:8px 20px;
-  border-right:1px solid rgba(255,255,255,0.12);
-}
-.stat:last-child{border-right:none;}
-@media(max-width:700px){
-  .stat:nth-child(2){border-right:none;}
-  .stat:nth-child(3){border-top:1px solid rgba(255,255,255,0.12);border-right:1px solid rgba(255,255,255,0.12);}
-  .stat:nth-child(4){border-top:1px solid rgba(255,255,255,0.12);}
-}
-.stat-n { font-family:'Outfit',sans-serif; font-size:clamp(2rem,4vw,3rem); font-weight:900; color:#fff; letter-spacing:-0.045em; line-height:1; margin-bottom:8px; }
-.stat-l { font-size:0.8rem; color:rgba(255,255,255,.68); font-weight:500; line-height:1.4; }
-
-/* ═══ SERVICES ═══════════════════════════════════════════════ */
-.svc-card {
-  background:#fff; border-radius:18px; padding:30px 26px;
-  border:1px solid #edf1f7; box-shadow:0 2px 12px rgba(12,22,40,0.05);
-  display:flex; flex-direction:column; gap:13px;
-  text-decoration:none; color:inherit;
-  transition:box-shadow .3s cubic-bezier(.4,0,.2,1), transform .3s cubic-bezier(.34,1.56,.64,1), border-color .2s;
-  position:relative; overflow:hidden; will-change:transform;
-}
-.svc-card::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:3px;
-  background:linear-gradient(90deg,#2563eb,#0ea5e9);
-  transform:scaleX(0); transform-origin:left; transition:transform .3s cubic-bezier(.4,0,.2,1);
-}
-.svc-card:hover { box-shadow:0 12px 40px rgba(12,22,40,0.12); transform:translateY(-6px); border-color:#dbeafe; }
-.svc-card:hover::before { transform:scaleX(1); }
-.svc-card:hover .svc-ico { background:linear-gradient(135deg,#2563eb,#0ea5e9); }
-.svc-card:hover .svc-arrow { transform:translateX(5px); color:#2563eb; }
-.svc-ico { width:54px; height:54px; background:#eff6ff; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; transition:background .3s; }
-.svc-title { font-family:'Outfit',sans-serif; font-size:1.02rem; font-weight:700; color:#0c1628; letter-spacing:-0.02em; }
-.svc-desc  { font-size:0.84rem; color:#6b7fa0; line-height:1.65; flex:1; }
-.svc-arrow { font-size:0.78rem; color:#c4cfe0; font-weight:700; transition:.24s cubic-bezier(.4,0,.2,1); }
-
-/* ═══ SEO IMPLANT BLOCK ══════════════════════════════════════ */
-.seo-block {
-  background:linear-gradient(140deg,#1e3a8a 0%,#2563eb 50%,#0ea5e9 100%);
-  border-radius:28px; padding:64px 56px; color:#fff;
-  display:grid; grid-template-columns:1.1fr 1fr; gap:60px; align-items:center;
-  position:relative; overflow:hidden;
-}
-.seo-block::before {
-  content:''; position:absolute; right:-80px; top:-80px;
-  width:320px; height:320px; border-radius:50%; border:1px solid rgba(255,255,255,0.08); pointer-events:none;
-}
-.seo-block::after {
-  content:''; position:absolute; left:-40px; bottom:-60px;
-  width:220px; height:220px; border-radius:50%; background:rgba(255,255,255,0.04); pointer-events:none;
-}
-@media(max-width:768px){.seo-block{grid-template-columns:1fr;padding:40px 28px;gap:36px;}}
-.seo-h2 { font-family:'Outfit',sans-serif; font-size:clamp(1.5rem,3.2vw,2.1rem); font-weight:800; margin-bottom:16px; line-height:1.12; letter-spacing:-0.035em; }
-.seo-p  { font-size:0.95rem; line-height:1.8; opacity:.88; margin-bottom:32px; }
-.seo-perks { display:flex; flex-direction:column; gap:12px; }
-.seo-perk {
-  display:flex; align-items:center; gap:13px; font-size:.88rem; font-weight:500;
-  background:rgba(255,255,255,0.1); padding:13px 18px; border-radius:12px;
-  backdrop-filter:blur(4px); transition:background .2s;
-}
-.seo-perk:hover{background:rgba(255,255,255,0.18);}
-.seo-check { width:24px; height:24px; min-width:24px; border-radius:50%; background:rgba(255,255,255,0.22); display:flex; align-items:center; justify-content:center; font-size:.7rem; font-weight:800; }
-
-/* ═══ PROMOS ══════════════════════════════════════════════════ */
-.promo-card {
-  background:#fff; border-radius:18px; padding:30px 26px;
-  border:1px solid #edf1f7; box-shadow:0 2px 12px rgba(12,22,40,0.05);
-  display:flex; flex-direction:column; gap:11px; position:relative; overflow:hidden;
-  transition:box-shadow .3s, transform .3s cubic-bezier(.34,1.56,.64,1);
-}
-.promo-card:hover{box-shadow:0 12px 36px rgba(12,22,40,0.10);transform:translateY(-4px);}
-.promo-top{height:4px;position:absolute;top:0;left:0;right:0;}
-.promo-top-b{background:linear-gradient(90deg,#2563eb,#0ea5e9);}
-.promo-top-g{background:linear-gradient(90deg,#059669,#34d399);}
-.promo-top-t{background:linear-gradient(90deg,#0d9488,#2dd4bf);}
-.promo-title{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:#0c1628;margin-top:8px;}
-.promo-desc {font-size:.875rem;color:#6b7fa0;line-height:1.65;flex:1;}
-
-/* ═══ PRICES PREVIEW ══════════════════════════════════════════ */
-.ptabs { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:24px; }
-.ptab {
-  font-size:.82rem;font-weight:600;padding:8px 17px;border-radius:99px;
-  border:1.5px solid #e1e8f0;background:#fff;cursor:pointer;
-  color:#6b7fa0;transition:.18s cubic-bezier(.4,0,.2,1);
-}
-.ptab.on,.ptab:hover{background:#2563eb;border-color:#2563eb;color:#fff;box-shadow:0 4px 14px rgba(37,99,235,0.28);}
-.ptable{display:none;animation:ftab .2s ease;}
-.ptable.on{display:block;}
-@keyframes ftab{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
-.prow{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid #f0f4f8;gap:16px;transition:background .15s;border-radius:8px;}
-.prow:last-child{border-bottom:none;}
-.prow:hover{background:#f8fafd;padding-left:10px;padding-right:10px;margin:0 -10px;}
-.p-name{font-size:.9rem;color:#0c1628;}
-.p-val {font-size:.9rem;font-weight:700;color:#1d4ed8;white-space:nowrap;}
-
-/* ═══ REVIEWS ═════════════════════════════════════════════════ */
-.rev-card {
-  background:#fff;border-radius:20px;padding:30px;
-  border:1px solid #edf1f7;box-shadow:0 2px 12px rgba(12,22,40,0.05);
-  display:flex;flex-direction:column;gap:16px;
-  transition:box-shadow .3s,transform .3s cubic-bezier(.34,1.56,.64,1);
-}
-.rev-card:hover{box-shadow:0 10px 32px rgba(12,22,40,0.10);transform:translateY(-4px);}
-.rev-q{font-size:2.6rem;color:#bfdbfe;line-height:1;font-family:Georgia,serif;}
-.rev-txt{font-size:.92rem;color:#4b5875;line-height:1.78;flex:1;}
-.rev-name{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;color:#0c1628;}
-.rev-date{font-size:.75rem;color:#8a9ab5;margin-top:2px;}
-.rev-svc{font-size:.68rem;font-weight:700;background:#eff6ff;color:#1d4ed8;padding:3px 10px;border-radius:99px;border:1px solid #bfdbfe;}
-
-/* ═══ DARK CTA SECTION ════════════════════════════════════════ */
-.dark-cta {
-  background:#060c1a; padding:96px 0;
-  position:relative; overflow:hidden;
-}
-.dark-cta::before {
-  content:''; position:absolute; inset:0;
-  background:radial-gradient(ellipse 60% 70% at 80% 50%,rgba(37,99,235,0.15) 0%,transparent 65%);
-  pointer-events:none;
-}
-.dark-cta-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
-@media(max-width:768px){.dark-cta-inner{grid-template-columns:1fr;gap:40px;}}
-.dark-cta-lbl{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#60a5fa;background:rgba(37,99,235,0.14);padding:5px 13px;border-radius:99px;display:inline-block;margin-bottom:18px;border:1px solid rgba(37,99,235,0.22);}
-.dark-cta-h{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:900;color:#fff;letter-spacing:-0.04em;line-height:1.1;margin-bottom:16px;}
-.dark-cta-p{font-size:.96rem;color:rgba(255,255,255,.58);line-height:1.75;margin-bottom:32px;}
-.promise-list{display:flex;flex-direction:column;gap:12px;margin-top:0;}
-.promise-item{display:flex;align-items:center;gap:13px;font-size:.9rem;color:rgba(255,255,255,.72);padding:13px 18px;background:rgba(255,255,255,.05);border-radius:12px;border:1px solid rgba(255,255,255,.07);transition:.2s;}
-.promise-item:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.13);}
-.promise-ico{width:36px;height:36px;min-width:36px;background:rgba(37,99,235,.25);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
-.form-dark{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:36px;}
-.form-dark .form-input,.form-dark .form-select,.form-dark .form-textarea{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.12);color:#fff;}
-.form-dark .form-input:focus,.form-dark .form-select:focus,.form-dark .form-textarea:focus{background:rgba(255,255,255,.1);border-color:#60a5fa;}
-.form-dark .form-input::placeholder{color:rgba(255,255,255,.3);}
-.form-dark .form-label{color:rgba(255,255,255,.5);}
-</style>
 </head>
 <body>
 <header class="site-header" id="site-header"></header>
 <main>
 
-<!-- ═ HERO ════════════════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero" aria-label="Главная">
   <div class="container">
     <div class="hero-wrap">
       <div>
-        <div class="hero-pill reveal"><span class="hero-pill-dot"></span>Стоматология в Москве · с 2012 года</div>
-        <h1 class="hero-h1 reveal d1" id="hero-h1">Стоматология,<br>которой <em>доверяют</em></h1>
-        <p class="hero-sub reveal d2" id="hero-sub"></p>
-        <div class="hero-ctas reveal d3">
+        <div class="hero-pill"><span class="hero-pill-dot"></span>Стоматология в Москве · с 2012 года</div>
+        <h1 class="hero-h1" id="hero-h1">Стоматология,<br>которой <em>доверяют</em></h1>
+        <p class="hero-sub" id="hero-sub"></p>
+        <div class="hero-ctas">
           <a href="#form-section" class="btn btn-primary btn-xl" id="hero-cta">Записаться на приём</a>
-          <a href="#" class="btn btn-outline btn-xl" id="hero-wa">💬 WhatsApp</a>
+          <a href="#" class="btn btn-wa btn-xl" id="hero-wa">💬 WhatsApp</a>
         </div>
-        <div class="hero-trust reveal d4" id="hero-trust"></div>
+        <div class="hero-trust" id="hero-trust"></div>
       </div>
-      <div class="hero-img-col reveal-r">
+      <div class="hero-img-col">
         <div class="hero-img-frame">
-          <img id="hero-img" src="" alt="" loading="eager" data-par="0.09">
+          <img id="hero-img" src="" alt="" loading="eager">
         </div>
         <div class="hero-card">
           <div class="hero-card-ico">🏆</div>
           <div>
-            <div class="hero-card-n" data-counter data-to="15000" data-sfx="+">0+</div>
+            <div class="hero-card-n" data-counter data-to="15000" data-sfx="+">15 000+</div>
             <div class="hero-card-l">пациентов доверяют нам</div>
           </div>
         </div>
@@ -315,14 +58,14 @@
   </div>
 </section>
 
-<!-- ═ STATS ═══════════════════════════════════════════════════ -->
-<section class="stats-band" aria-label="Наши результаты">
+<!-- STATS -->
+<section class="stats-band" aria-label="Результаты">
   <div class="container">
     <div class="stats-grid" id="stats-grid"></div>
   </div>
 </section>
 
-<!-- ═ SERVICES ════════════════════════════════════════════════ -->
+<!-- SERVICES -->
 <section class="section section-bg" id="services" aria-label="Услуги">
   <div class="container">
     <div class="sec-head reveal">
@@ -335,14 +78,14 @@
   </div>
 </section>
 
-<!-- ═ SEO IMPLANT ══════════════════════════════════════════════ -->
+<!-- SEO BLOCK -->
 <section class="section" aria-label="Имплантация">
   <div class="container">
     <div class="seo-block reveal-s" id="seo-block"></div>
   </div>
 </section>
 
-<!-- ═ DOCTORS ═════════════════════════════════════════════════ -->
+<!-- DOCTORS -->
 <section class="section section-bg" id="doctors-section" aria-label="Врачи">
   <div class="container">
     <div class="sec-head reveal">
@@ -358,7 +101,7 @@
   </div>
 </section>
 
-<!-- ═ PROMOS ══════════════════════════════════════════════════ -->
+<!-- PROMOS -->
 <section class="section" aria-label="Акции">
   <div class="container">
     <div class="sec-head reveal">
@@ -370,7 +113,7 @@
   </div>
 </section>
 
-<!-- ═ PRICES ══════════════════════════════════════════════════ -->
+<!-- PRICES PREVIEW -->
 <section class="section section-bg" aria-label="Цены">
   <div class="container">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;margin-bottom:44px" class="reveal">
@@ -380,14 +123,14 @@
       </div>
       <a href="prices.html" class="btn btn-outline btn-lg">Полный прайс →</a>
     </div>
-    <div style="background:#fff;border-radius:22px;padding:36px 40px;border:1px solid #edf1f7;box-shadow:0 4px 20px rgba(12,22,40,0.07)" class="reveal">
+    <div style="background:#fff;border-radius:22px;padding:36px 40px;border:1px solid var(--border-light);box-shadow:var(--s-md)" class="reveal">
       <div class="ptabs" id="ptabs"></div>
       <div id="ptables"></div>
     </div>
   </div>
 </section>
 
-<!-- ═ REVIEWS ═════════════════════════════════════════════════ -->
+<!-- REVIEWS -->
 <section class="section" aria-label="Отзывы">
   <div class="container">
     <div class="sec-head center reveal">
@@ -400,7 +143,7 @@
   </div>
 </section>
 
-<!-- ═ DARK FORM SECTION ════════════════════════════════════════ -->
+<!-- FORM DARK -->
 <section class="dark-cta" id="form-section" aria-label="Запись">
   <div class="container">
     <div class="dark-cta-inner">
@@ -417,7 +160,7 @@
   </div>
 </section>
 
-<!-- ═ CONTACTS ════════════════════════════════════════════════ -->
+<!-- CONTACTS PREVIEW -->
 <section class="section" aria-label="Контакты">
   <div class="container">
     <div class="sec-head reveal">
@@ -440,121 +183,124 @@
 <script src="config.js"></script>
 <script src="shared.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const d = SITE_DATA;
+document.addEventListener('DOMContentLoaded', function() {
+  var d = SITE_DATA;
 
   // Meta
   document.getElementById('mt').textContent = d.seo.defaultTitle;
   document.getElementById('md').content     = d.seo.defaultDescription;
-  document.getElementById('mk').content     = d.seo.defaultKeywords;
   document.getElementById('ot').content     = d.seo.defaultTitle;
   document.getElementById('od').content     = d.seo.defaultDescription;
   document.getElementById('oi').content     = d.seo.ogImage;
-  if(d.seo.yandexVerification) document.getElementById('yv').content = d.seo.yandexVerification;
 
   // Hero
-  document.getElementById('hero-h1').innerHTML = `Стоматология,<br>которой <em>доверяют</em>`;
   document.getElementById('hero-sub').textContent = d.hero.subtitle;
   document.getElementById('hero-img').src = d.hero.image;
   document.getElementById('hero-img').alt = d.hero.imageAlt;
   document.getElementById('hero-cta').textContent = d.hero.ctaPrimary;
   document.getElementById('hero-wa').href = UTILS.whatsappLink();
-  document.getElementById('hero-wa').innerHTML = '💬 ' + d.hero.ctaWhatsapp;
+  document.getElementById('hero-wa').textContent = '💬 ' + d.hero.ctaWhatsapp;
 
-  const stats = [
+  // Trust bar с счётчиками
+  document.getElementById('hero-trust').innerHTML = [
     {n:12,   sfx:' лет', l:'на рынке'},
     {n:15000,sfx:'+',    l:'пациентов'},
     {n:98,   sfx:'%',    l:'довольных'},
     {n:5,    sfx:' лет', l:'гарантия'},
-  ];
-  document.getElementById('hero-trust').innerHTML = stats.map(s=>`
-    <div class="trust-cell">
-      <span class="trust-num" data-counter data-to="${s.n}" data-sfx="${s.sfx}">0${s.sfx}</span>
-      <span class="trust-txt">${s.l}</span>
-    </div>`).join('');
+  ].map(function(s){
+    return '<div class="trust-cell">' +
+      '<span class="trust-num" data-counter data-to="'+s.n+'" data-sfx="'+s.sfx+'">0'+s.sfx+'</span>' +
+      '<span class="trust-txt">'+s.l+'</span></div>';
+  }).join('');
 
   // Stats band
-  const sBand = [{n:12,sfx:'+',l:'лет работы'},{n:15000,sfx:'+',l:'пациентов'},{n:3000,sfx:'+',l:'имплантаций'},{n:98,sfx:'%',l:'довольных'}];
-  document.getElementById('stats-grid').innerHTML = sBand.map(s=>`
-    <div class="stat reveal">
-      <div class="stat-n" data-counter data-to="${s.n}" data-sfx="${s.sfx}">0</div>
-      <div class="stat-l">${s.l}</div>
-    </div>`).join('');
+  document.getElementById('stats-grid').innerHTML = [
+    {n:12,   sfx:'+', l:'лет работы'},
+    {n:15000,sfx:'+', l:'пациентов'},
+    {n:3000, sfx:'+', l:'имплантаций'},
+    {n:98,   sfx:'%', l:'довольных'},
+  ].map(function(s){
+    return '<div class="stat reveal"><div class="stat-n" data-counter data-to="'+s.n+'" data-sfx="'+s.sfx+'">0</div><div class="stat-l">'+s.l+'</div></div>';
+  }).join('');
 
   // Services
-  document.getElementById('svc-grid').innerHTML = d.services.map((s,i)=>`
-    <a href="${s.file}" class="svc-card reveal d${Math.min(i+1,8)}">
-      <div class="svc-ico">${s.icon}</div>
-      <div class="svc-title">${s.title}</div>
-      <div class="svc-desc">${s.shortDesc}</div>
-      <div class="svc-arrow">Подробнее →</div>
-    </a>`).join('');
+  document.getElementById('svc-grid').innerHTML = d.services.map(function(s,i){
+    return '<a href="'+s.file+'" class="svc-card reveal d'+Math.min(i+1,8)+'">' +
+      '<div class="svc-ico">'+s.icon+'</div>' +
+      '<div class="svc-title">'+s.title+'</div>' +
+      '<div class="svc-desc">'+s.shortDesc+'</div>' +
+      '<div class="svc-arrow">Подробнее →</div></a>';
+  }).join('');
 
   // SEO block
-  document.getElementById('seo-block').innerHTML = `
-    <div>
-      <h2 class="seo-h2">${d.seoBlock.h2}</h2>
-      <p class="seo-p">${d.seoBlock.description}</p>
-      <a href="services/implantation.html" class="btn btn-xl" style="background:#fff;color:#1d4ed8;font-weight:700;box-shadow:0 8px 28px rgba(0,0,0,0.18)">${d.seoBlock.cta} →</a>
-    </div>
-    <div class="seo-perks">
-      ${d.seoBlock.benefits.map(b=>`<div class="seo-perk"><span class="seo-check">✓</span>${b}</div>`).join('')}
-    </div>`;
+  document.getElementById('seo-block').innerHTML =
+    '<div><h2 class="seo-h2">'+d.seoBlock.h2+'</h2>' +
+    '<p class="seo-p">'+d.seoBlock.description+'</p>' +
+    '<a href="services/implantation.html" class="btn btn-xl" style="background:#fff;color:var(--blue-dark);font-weight:700;box-shadow:0 8px 28px rgba(0,0,0,.18)">'+d.seoBlock.cta+' →</a></div>' +
+    '<div class="seo-perks">'+d.seoBlock.benefits.map(function(b){
+      return '<div class="seo-perk"><span class="seo-check">✓</span>'+b+'</div>';
+    }).join('')+'</div>';
 
   // Doctors
-  document.getElementById('doc-grid').innerHTML = d.doctors.map((dc,i)=>`
-    <div class="doctor-card reveal d${i+1}">
-      <div class="doc-photo-wrap"><img src="${dc.photo}" alt="${dc.alt}" class="doctor-photo" loading="lazy"></div>
-      <div class="doctor-info">
-        <div class="doctor-name">${dc.name}</div>
-        <div class="doctor-role">${dc.role}</div>
-        <div class="doctor-exp">🎓 Опыт: ${dc.experience}</div>
-        <div class="doctor-specs">${dc.specializations.map(sp=>`<span class="doctor-spec">${sp}</span>`).join('')}</div>
-      </div>
-    </div>`).join('');
+  document.getElementById('doc-grid').innerHTML = d.doctors.map(function(dc,i){
+    return '<div class="doctor-card reveal d'+(i+1)+'">' +
+      '<div class="doc-photo-wrap"><img src="'+dc.photo+'" alt="'+dc.alt+'" class="doctor-photo" loading="lazy"></div>' +
+      '<div class="doctor-info">' +
+        '<div class="doctor-name">'+dc.name+'</div>' +
+        '<div class="doctor-role">'+dc.role+'</div>' +
+        '<div class="doctor-exp">🎓 Опыт: '+dc.experience+'</div>' +
+        '<div class="doctor-specs">'+dc.specializations.map(function(sp){return '<span class="doctor-spec">'+sp+'</span>';}).join('')+'</div>' +
+      '</div></div>';
+  }).join('');
 
   // Promos
-  const stripeCls = {blue:'promo-top-b',green:'promo-top-g',teal:'promo-top-t'};
-  document.getElementById('promo-grid').innerHTML = d.promotions.map((p,i)=>`
-    <div class="promo-card reveal d${i+1}">
-      <div class="promo-top ${stripeCls[p.color]||'promo-top-b'}"></div>
-      <div style="margin-top:6px"><span class="badge badge-${p.color==='green'?'green':p.color==='teal'?'teal':'blue'}">${p.badge}</span></div>
-      <div class="promo-title">${p.title}</div>
-      <div class="promo-desc">${p.desc}</div>
-      <a href="#form-section" class="btn btn-outline btn-sm" style="align-self:flex-start;margin-top:4px">Подробнее</a>
-    </div>`).join('');
+  var cm = {blue:'promo-top-b',green:'promo-top-g',teal:'promo-top-t'};
+  document.getElementById('promo-grid').innerHTML = d.promotions.map(function(p,i){
+    var bc = p.color==='green'?'badge-green':p.color==='teal'?'badge-teal':'badge-blue';
+    return '<div class="promo-card reveal d'+(i+1)+'">' +
+      '<div class="promo-top '+(cm[p.color]||'promo-top-b')+'"></div>' +
+      '<div style="margin-top:6px"><span class="badge '+bc+'">'+p.badge+'</span></div>' +
+      '<div class="promo-title">'+p.title+'</div>' +
+      '<div class="promo-desc">'+p.desc+'</div>' +
+      '<a href="#form-section" class="btn btn-outline btn-sm" style="align-self:flex-start;margin-top:4px">Подробнее</a></div>';
+  }).join('');
 
-  // Prices
-  const cats = d.prices.slice(0,2);
-  document.getElementById('ptabs').innerHTML = cats.map((c,i)=>`<button class="ptab${i===0?' on':''}" data-tab="${i}">${c.category}</button>`).join('');
-  document.getElementById('ptables').innerHTML = cats.map((c,i)=>`
-    <div class="ptable${i===0?' on':''}" data-t="${i}">
-      ${c.items.map(it=>`<div class="prow"><span class="p-name">${it.service}</span><span class="p-val">${it.price}</span></div>`).join('')}
-    </div>`).join('');
-  document.querySelectorAll('.ptab').forEach(t => t.addEventListener('click', ()=>{
-    document.querySelectorAll('.ptab').forEach(x=>x.classList.remove('on'));
-    document.querySelectorAll('.ptable').forEach(x=>x.classList.remove('on'));
-    t.classList.add('on');
-    document.querySelector(`[data-t="${t.dataset.tab}"]`).classList.add('on');
-  }));
+  // Prices tabs
+  var cats = d.prices.slice(0,2);
+  document.getElementById('ptabs').innerHTML = cats.map(function(c,i){
+    return '<button class="ptab'+(i===0?' on':'')+'" data-tab="'+i+'">'+c.category+'</button>';
+  }).join('');
+  document.getElementById('ptables').innerHTML = cats.map(function(c,i){
+    return '<div class="ptable'+(i===0?' on':'')+'" data-t="'+i+'">'+
+      c.items.map(function(it){return '<div class="prow"><span class="p-name">'+it.service+'</span><span class="p-val">'+it.price+'</span></div>';}).join('')+
+    '</div>';
+  }).join('');
+  document.querySelectorAll('.ptab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('.ptab').forEach(function(t){t.classList.remove('on')});
+      document.querySelectorAll('.ptable').forEach(function(t){t.classList.remove('on')});
+      tab.classList.add('on');
+      document.querySelector('[data-t="'+tab.dataset.tab+'"]').classList.add('on');
+    });
+  });
 
   // Reviews
-  const rg = document.getElementById('rev-grid');
-  if(window.innerWidth<600) rg.style.gridTemplateColumns='1fr';
-  rg.innerHTML = d.reviews.map((r,i)=>`
-    <div class="rev-card reveal d${i+1}">
-      <div class="rev-q">"</div>
-      <p class="rev-txt">${r.text}</p>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-        <div><div class="rev-name">${r.name}</div><div class="rev-date">${r.date}</div></div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
-          <div class="stars">${'★'.repeat(r.rating)}</div>
-          <div class="rev-svc">${r.service}</div>
-        </div>
-      </div>
-    </div>`).join('');
+  var rg = document.getElementById('rev-grid');
+  if (window.innerWidth < 600) rg.style.gridTemplateColumns = '1fr';
+  rg.innerHTML = d.reviews.map(function(r,i){
+    return '<div class="rev-card reveal d'+(i+1)+'">' +
+      '<div class="rev-q">"</div>' +
+      '<p class="rev-txt">'+r.text+'</p>' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">' +
+        '<div><div class="rev-name">'+r.name+'</div><div class="rev-date">'+r.date+'</div></div>' +
+        '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">' +
+          '<div class="stars">'+'★'.repeat(r.rating)+'</div>' +
+          '<div class="rev-svc">'+r.service+'</div>' +
+        '</div>' +
+      '</div></div>';
+  }).join('');
 
-  // Form (dark)
+  // Form dark
   document.getElementById('form-h').textContent  = d.form.title;
   document.getElementById('form-sub').textContent = d.form.subtitle;
   document.getElementById('promise-list').innerHTML = [
@@ -562,17 +308,21 @@ document.addEventListener('DOMContentLoaded', () => {
     {i:'🎁',t:'Консультация для новых пациентов бесплатно'},
     {i:'🔒',t:'Ваши данные надёжно защищены'},
     {i:'💳',t:'Рассрочка 0% без переплаты'},
-  ].map(p=>`<div class="promise-item"><div class="promise-ico">${p.i}</div>${p.t}</div>`).join('');
+  ].map(function(p){
+    return '<div class="promise-item"><div class="promise-ico">'+p.i+'</div>'+p.t+'</div>';
+  }).join('');
   document.getElementById('form-box').innerHTML = getBookingFormHTML(false);
 
-  // Contacts
+  // Contacts preview
   document.getElementById('ci').innerHTML = [
-    {i:'📍',l:'Адрес',v:d.contacts.address},
-    {i:'🚇',l:'Метро',v:d.contacts.metroStation},
-    {i:'📞',l:'Телефон',v:`<a href="tel:${d.contacts.phoneRaw}">${d.contacts.phone}</a>`},
+    {i:'📍',l:'Адрес',       v:d.contacts.address},
+    {i:'🚇',l:'Метро',       v:d.contacts.metroStation},
+    {i:'📞',l:'Телефон',     v:'<a href="tel:'+d.contacts.phoneRaw+'">'+d.contacts.phone+'</a>'},
     {i:'⏰',l:'Режим работы',v:d.general.workingHours},
-  ].map(c=>`<div class="contact-item"><div class="contact-icon">${c.i}</div><div><div class="c-label">${c.l}</div><div class="c-value">${c.v}</div></div></div>`).join('');
-  document.getElementById('map').innerHTML = `<iframe src="${d.map.embedUrl}" allowfullscreen loading="lazy" title="Карта"></iframe>`;
+  ].map(function(c){
+    return '<div class="contact-item"><div class="contact-icon">'+c.i+'</div><div><div class="c-label">'+c.l+'</div><div class="c-value">'+c.v+'</div></div></div>';
+  }).join('');
+  document.getElementById('map').innerHTML = '<iframe src="'+d.map.embedUrl+'" allowfullscreen loading="lazy" title="Карта"></iframe>';
 
   initPage('index');
 });

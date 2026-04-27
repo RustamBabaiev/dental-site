@@ -5,74 +5,14 @@
   <title id="mt">Контакты | СтомаПрайм Москва</title>
   <meta name="description" content="Адрес и контакты стоматологической клиники СтомаПрайм в Москве.">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
-<style>
-.contacts-layout { display:grid; grid-template-columns:1fr 1.4fr; gap:44px; align-items:start; }
-@media(max-width:900px){.contacts-layout{grid-template-columns:1fr;}}
-
-.ccard { background:#fff; border-radius:16px; border:1px solid #edf1f7; box-shadow:0 2px 12px rgba(12,22,40,0.06); overflow:hidden; }
-.ccard-head { padding:18px 24px; background:#f8fafd; border-bottom:1px solid #f0f4f8; }
-.ccard-head h3 { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8a9ab5; }
-.ccard-body .contact-item { border-radius:0; border:none; border-bottom:1px solid #f5f7fa; box-shadow:none; }
-.ccard-body .contact-item:last-child { border-bottom:none; }
-
-.route-block { background:#f8fafd; border-radius:16px; padding:24px 26px; border:1px solid #edf1f7; }
-.route-row { display:flex; align-items:flex-start; gap:14px; padding:11px 0; border-bottom:1px solid #f0f4f8; }
-.route-row:last-child{border-bottom:none;}
-.route-icon { width:38px;height:38px;min-width:38px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 1px 4px rgba(12,22,40,0.08); }
-.route-t strong{display:block;font-size:.88rem;font-weight:700;color:#0c1628;margin-bottom:2px;}
-.route-t span{font-size:.82rem;color:#6b7fa0;line-height:1.5;}
-
-.big-map { border-radius:20px; overflow:hidden; box-shadow:0 12px 40px rgba(12,22,40,0.12); height:440px; }
-.big-map iframe{width:100%;height:100%;border:none;display:block;}
-
-.soc-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-}
-@media(max-width: 860px) { .soc-grid { grid-template-columns: repeat(3, 1fr); } }
-@media(max-width: 560px) { .soc-grid { grid-template-columns: repeat(2, 1fr); } }
-
-.soc-tile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 28px 16px;
-  background: #fff;
-  border-radius: 18px;
-  border: 1px solid #edf1f7;
-  box-shadow: 0 2px 12px rgba(12,22,40,0.06);
-  transition: box-shadow .26s cubic-bezier(.4,0,.2,1), transform .26s cubic-bezier(.34,1.56,.64,1), border-color .18s;
-  color: #6b7fa0;
-  font-size: .82rem;
-  font-weight: 600;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-}
-.soc-tile:hover {
-  box-shadow: 0 12px 36px rgba(12,22,40,0.11);
-  transform: translateY(-5px);
-  color: #2563eb;
-  border-color: #bfdbfe;
-}
-.soc-tile svg {
-  width: 32px;
-  height: 32px;
-  transition: transform .26s cubic-bezier(.34,1.56,.64,1);
-}
-.soc-tile:hover svg { transform: scale(1.15); }
-</style>
 </head>
 <body>
 <header class="site-header" id="site-header"></header>
 <main>
 
-<section class="page-hero" aria-label="Контакты">
+<section class="page-hero">
   <div class="container">
     <nav class="breadcrumb"><a href="index.html">Главная</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Контакты</span></nav>
     <div class="label reveal">Мы здесь</div>
@@ -97,7 +37,7 @@
       </div>
       <div>
         <div class="big-map reveal-r" id="big-map"></div>
-        <p style="text-align:center;font-size:.82rem;color:#8a9ab5;margin-top:12px" id="map-addr"></p>
+        <p style="text-align:center;font-size:.82rem;color:var(--text-light);margin-top:12px" id="map-addr"></p>
       </div>
     </div>
   </div>
@@ -122,7 +62,7 @@
       <h2 class="h2">Записаться на приём</h2>
       <div class="accent-line c w"></div>
     </div>
-    <div style="background:#fff;border-radius:22px;padding:40px;box-shadow:0 8px 40px rgba(12,22,40,0.10);border:1px solid #edf1f7" class="reveal" id="form-box"></div>
+    <div style="background:#fff;border-radius:22px;padding:40px;box-shadow:var(--s-xl);border:1px solid var(--border-light)" class="reveal" id="form-box"></div>
   </div>
 </section>
 
@@ -130,53 +70,56 @@
 <footer class="site-footer" id="site-footer"></footer>
 <script src="config.js"></script><script src="shared.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const d=SITE_DATA;
-  document.getElementById('mt').textContent=`Контакты | ${d.general.clinicName}`;
+document.addEventListener('DOMContentLoaded', function() {
+  var d = SITE_DATA;
+  document.getElementById('mt').textContent = 'Контакты | ' + d.general.clinicName;
 
-  const ci=c=>`<div class="contact-item"><div class="contact-icon">${c.i}</div><div><div class="c-label">${c.l}</div><div class="c-value">${c.v}</div></div></div>`;
+  function ci(c) {
+    return '<div class="contact-item"><div class="contact-icon">'+c.i+'</div><div><div class="c-label">'+c.l+'</div><div class="c-value">'+c.v+'</div></div></div>';
+  }
 
-  document.getElementById('c-main').innerHTML=[
-    {i:'📍',l:'Адрес',         v:d.contacts.address},
-    {i:'🚇',l:'Метро',         v:d.contacts.metroStation},
-    {i:'⏰',l:'Режим работы',  v:d.general.workingHours},
+  document.getElementById('c-main').innerHTML = [
+    {i:'📍',l:'Адрес',        v:d.contacts.address},
+    {i:'🚇',l:'Метро',        v:d.contacts.metroStation},
+    {i:'⏰',l:'Режим работы', v:d.general.workingHours},
   ].map(ci).join('');
 
-  document.getElementById('c-channels').innerHTML=[
-    {i:'📞',l:'Телефон', v:`<a href="tel:${d.contacts.phoneRaw}">${d.contacts.phone}</a>`},
-    {i:'✉️',l:'Email',   v:`<a href="mailto:${d.contacts.email}">${d.contacts.email}</a>`},
-    {i:'💬',l:'WhatsApp',v:`<a href="${UTILS.whatsappLink()}" target="_blank">Написать в WhatsApp</a>`},
-    {i:'✈️',l:'Telegram',v:`<a href="${d.contacts.telegramLink}" target="_blank">${d.contacts.telegram}</a>`},
+  document.getElementById('c-channels').innerHTML = [
+    {i:'📞',l:'Телефон', v:'<a href="tel:'+d.contacts.phoneRaw+'">'+d.contacts.phone+'</a>'},
+    {i:'✉️',l:'Email',   v:'<a href="mailto:'+d.contacts.email+'">'+d.contacts.email+'</a>'},
+    {i:'💬',l:'WhatsApp',v:'<a href="'+UTILS.whatsappLink()+'" target="_blank">Написать в WhatsApp</a>'},
+    {i:'✈️',l:'Telegram',v:'<a href="'+d.contacts.telegramLink+'" target="_blank">'+d.contacts.telegram+'</a>'},
   ].map(ci).join('');
 
-  document.getElementById('c-route').innerHTML=`
-    <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#8a9ab5;margin-bottom:14px">Как добраться</div>
-    <div class="route-row"><div class="route-icon">🚇</div><div class="route-t"><strong>На метро</strong><span>${d.contacts.metroStation}, 5 минут пешком по ул. Лесная</span></div></div>
-    <div class="route-row"><div class="route-icon">🚗</div><div class="route-t"><strong>На автомобиле</strong><span>Бесплатная парковка во дворе для пациентов</span></div></div>
-    <div class="route-row"><div class="route-icon">🚌</div><div class="route-t"><strong>На автобусе</strong><span>Остановка «Лесная улица» — маршруты 12, 23, 45</span></div></div>`;
+  document.getElementById('c-route').innerHTML =
+    '<div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-light);margin-bottom:14px">Как добраться</div>' +
+    '<div class="route-row"><div class="route-icon">🚇</div><div class="route-t"><strong>На метро</strong><span>'+d.contacts.metroStation+', 5 минут пешком по ул. Лесная</span></div></div>' +
+    '<div class="route-row"><div class="route-icon">🚗</div><div class="route-t"><strong>На автомобиле</strong><span>Бесплатная парковка во дворе для пациентов</span></div></div>' +
+    '<div class="route-row"><div class="route-icon">🚌</div><div class="route-t"><strong>На автобусе</strong><span>Остановка «Лесная улица» — маршруты 12, 23, 45</span></div></div>';
 
-  document.getElementById('big-map').innerHTML=`<iframe src="${d.map.embedUrl}" allowfullscreen loading="lazy" title="Карта"></iframe>`;
-  document.getElementById('map-addr').textContent=`📍 ${d.contacts.address}`;
+  document.getElementById('big-map').innerHTML = '<iframe src="'+d.map.embedUrl+'" allowfullscreen loading="lazy" title="Карта"></iframe>';
+  document.getElementById('map-addr').textContent = '📍 ' + d.contacts.address;
 
-  const socSVG={
-    vk:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.131-.427.131-.427s-.019-1.307.587-1.498c.597-.189 1.365 1.263 2.178 1.821.615.422 1.082.33 1.082.33l2.175-.03s1.137-.071.598-1.121c-.044-.083-.313-.666-1.608-1.883-1.356-1.274-1.174-1.068.459-3.271.999-1.333 1.398-2.146 1.273-2.494-.12-.332-.854-.244-.854-.244l-2.448.015s-.181-.025-.316.054c-.132.078-.216.26-.216.26s-.387 1.028-.903 1.903c-1.088 1.84-1.524 1.94-1.703 1.824-.414-.268-.311-1.075-.311-1.649 0-1.793.272-2.54-.529-2.733-.266-.064-.461-.106-1.141-.113-.872-.009-1.609.003-2.027.208-.278.135-.492.436-.361.453.162.021.528.099.722.363.252.341.243 1.107.243 1.107s.145 2.112-.337 2.373c-.331.179-.786-.187-1.761-1.854-.5-.861-.878-1.814-.878-1.814s-.072-.176-.202-.271c-.157-.114-.376-.15-.376-.15l-2.325.015s-.349.01-.477.162c-.114.135-.009.414-.009.414s1.822 4.261 3.881 6.409c1.89 1.973 4.04 1.842 4.04 1.842h.974z"/></svg>`,
-    yt:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>`,
-    ok:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm5.5 9.5c-.56.98-1.63 1.63-2.85 1.63h-.15l1.85 2.07c.3.33.28.85-.05 1.15a.81.81 0 01-1.15-.05L12 17.8l-3.15 2.5a.81.81 0 01-1.15.05.81.81 0 01.05-1.15l1.85-2.07h-.15c-1.22 0-2.29-.65-2.85-1.63a.81.81 0 011.4-.82c.26.44.74.72 1.3.72h3.4c.56 0 1.04-.28 1.3-.72a.81.81 0 111.4.82z"/></svg>`,
-    tg:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 13.447l-2.95-.924c-.64-.203-.652-.64.136-.954l11.52-4.44c.537-.194 1.006.131.928.092z"/></svg>`,
-    dz:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-.5 19.5C9.5 17 7 14.5 4.5 12.5 7 10.5 9.5 8 11.5 4.5c2 3.5 4.5 6 7 8-2.5 2-5 4.5-7 7z"/></svg>`,
+  var socSVG = {
+    vk:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.785 16.241s.288-.032.436-.194c.136-.148.131-.427.131-.427s-.019-1.307.587-1.498c.597-.189 1.365 1.263 2.178 1.821.615.422 1.082.33 1.082.33l2.175-.03s1.137-.071.598-1.121c-.044-.083-.313-.666-1.608-1.883-1.356-1.274-1.174-1.068.459-3.271.999-1.333 1.398-2.146 1.273-2.494-.12-.332-.854-.244-.854-.244l-2.448.015s-.181-.025-.316.054c-.132.078-.216.26-.216.26s-.387 1.028-.903 1.903c-1.088 1.84-1.524 1.94-1.703 1.824-.414-.268-.311-1.075-.311-1.649 0-1.793.272-2.54-.529-2.733-.266-.064-.461-.106-1.141-.113-.872-.009-1.609.003-2.027.208-.278.135-.492.436-.361.453.162.021.528.099.722.363.252.341.243 1.107.243 1.107s.145 2.112-.337 2.373c-.331.179-.786-.187-1.761-1.854-.5-.861-.878-1.814-.878-1.814s-.072-.176-.202-.271c-.157-.114-.376-.15-.376-.15l-2.325.015s-.349.01-.477.162c-.114.135-.009.414-.009.414s1.822 4.261 3.881 6.409c1.89 1.973 4.04 1.842 4.04 1.842h.974z"/></svg>',
+    yt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>',
+    ok:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 6c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm5.5 9.5c-.56.98-1.63 1.63-2.85 1.63h-.15l1.85 2.07c.3.33.28.85-.05 1.15a.81.81 0 01-1.15-.05L12 17.8l-3.15 2.5a.81.81 0 01-1.15.05.81.81 0 01.05-1.15l1.85-2.07h-.15c-1.22 0-2.29-.65-2.85-1.63a.81.81 0 011.4-.82c.26.44.74.72 1.3.72h3.4c.56 0 1.04-.28 1.3-.72a.81.81 0 111.4.82z"/></svg>',
+    tg:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.26 13.447l-2.95-.924c-.64-.203-.652-.64.136-.954l11.52-4.44c.537-.194 1.006.131.928.092z"/></svg>',
+    dz:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-.5 19.5C9.5 17 7 14.5 4.5 12.5 7 10.5 9.5 8 11.5 4.5c2 3.5 4.5 6 7 8-2.5 2-5 4.5-7 7z"/></svg>',
   };
-  const s=d.socials;
-  const socs=[
-    {href:s.vk,       k:'vk',  label:'ВКонтакте'},
-    {href:s.youtube,  k:'yt',  label:'YouTube'},
-    {href:s.ok,       k:'ok',  label:'Одноклассники'},
-    {href:`https://t.me/${d.contacts.telegram.replace('@','')}`,k:'tg',label:'Telegram'},
-    {href:s.dzen,     k:'dz',  label:'Дзен'},
+  var s = d.socials;
+  var socs = [
+    {href:s.vk, k:'vk', label:'ВКонтакте'},
+    {href:s.youtube, k:'yt', label:'YouTube'},
+    {href:s.ok, k:'ok', label:'Одноклассники'},
+    {href:'https://t.me/'+d.contacts.telegram.replace('@',''), k:'tg', label:'Telegram'},
+    {href:s.dzen, k:'dz', label:'Дзен'},
   ];
-  document.getElementById('soc-grid').innerHTML=socs.filter(x=>x.href).map(x=>`
-    <a href="${x.href}" class="soc-tile" target="_blank" rel="noopener">${socSVG[x.k]}${x.label}</a>`).join('');
+  document.getElementById('soc-grid').innerHTML = socs.filter(function(x){return x.href}).map(function(x){
+    return '<a href="'+x.href+'" class="soc-tile" target="_blank" rel="noopener">'+socSVG[x.k]+x.label+'</a>';
+  }).join('');
 
-  document.getElementById('form-box').innerHTML=getBookingFormHTML(false);
+  document.getElementById('form-box').innerHTML = getBookingFormHTML(false);
   initPage('contacts');
 });
 </script>

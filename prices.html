@@ -5,61 +5,14 @@
   <title id="mt">Цены | СтомаПрайм Москва</title>
   <meta name="description" content="Прайс-лист стоматологической клиники СтомаПрайм. Прозрачные цены, рассрочка 0%.">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
-<style>
-.prices-wrap { display:grid; grid-template-columns:220px 1fr; gap:32px; align-items:start; }
-@media(max-width:768px){.prices-wrap{grid-template-columns:1fr;}}
-
-.p-sidebar {
-  background:#fff; border-radius:16px; border:1px solid #edf1f7;
-  box-shadow:0 2px 12px rgba(12,22,40,0.06); overflow:hidden;
-  position:sticky; top:88px;
-}
-.p-sidebar-h { font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#8a9ab5; padding:16px 20px 8px; }
-.p-sidebar-link {
-  display:block; padding:11px 20px; font-size:.875rem; font-weight:600; color:#6b7fa0;
-  border-left:3px solid transparent; cursor:pointer; transition:.16s;
-}
-.p-sidebar-link:hover,.p-sidebar-link.on { color:#2563eb; background:#f5f8ff; border-left-color:#2563eb; }
-
-.pcat { background:#fff; border-radius:16px; border:1px solid #edf1f7; box-shadow:0 2px 12px rgba(12,22,40,0.05); overflow:hidden; margin-bottom:16px; }
-.pcat-head {
-  padding:18px 24px; border-bottom:1px solid #f0f4f8; display:flex; align-items:center; justify-content:space-between;
-  cursor:pointer; background:#fafbfd; transition:background .15s;
-}
-.pcat-head:hover{background:#f5f8ff;}
-.pcat-title { font-family:'Outfit',sans-serif; font-size:1rem; font-weight:700; color:#0c1628; }
-.pcat-toggle { color:#8a9ab5; font-size:.9rem; transition:.22s; }
-.pcat-toggle.open{transform:rotate(180deg);}
-.pcat-body { padding:0 24px; display:none; }
-.pcat-body.open{display:block;}
-.p-row {
-  display:flex; align-items:center; justify-content:space-between; padding:14px 0;
-  border-bottom:1px solid #f5f7fa; gap:16px; transition:background .15s; border-radius:8px;
-}
-.p-row:last-child{border-bottom:none;}
-.p-row:hover{background:#f8fafd;padding-left:8px;padding-right:8px;margin:0 -8px;}
-.p-svc { font-size:.9rem; color:#0c1628; }
-.p-price { font-size:.9rem; font-weight:700; color:#1d4ed8; white-space:nowrap; }
-
-.install-banner {
-  background:linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9);
-  border-radius:20px; padding:28px 36px; color:#fff;
-  display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
-  margin-bottom:32px; box-shadow:0 8px 28px rgba(37,99,235,0.28);
-  position:relative; overflow:hidden;
-}
-.install-banner::after{content:'';position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);pointer-events:none;}
-.install-h { font-family:'Outfit',sans-serif; font-size:1.25rem; font-weight:800; margin-bottom:5px; letter-spacing:-0.025em; }
-.install-p { font-size:.875rem; opacity:.85; }
-</style>
 </head>
 <body>
 <header class="site-header" id="site-header"></header>
 <main>
 
-<section class="page-hero" aria-label="Цены">
+<section class="page-hero">
   <div class="container">
     <nav class="breadcrumb"><a href="index.html">Главная</a><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Цены</span></nav>
     <div class="label reveal">Прайс-лист</div>
@@ -75,7 +28,7 @@
         <div class="install-h">Рассрочка 0% до 24 месяцев</div>
         <p class="install-p">Оформим прямо в клинике за 15 минут. Без справок и поручителей.</p>
       </div>
-      <a href="#form-section" class="btn btn-xl" style="background:#fff;color:#1d4ed8;font-weight:700;flex-shrink:0;box-shadow:0 4px 16px rgba(0,0,0,0.15)">Записаться →</a>
+      <a href="#form-section" class="btn btn-xl" style="background:#fff;color:var(--blue-dark);font-weight:700;flex-shrink:0;box-shadow:0 4px 16px rgba(0,0,0,.15)">Записаться →</a>
     </div>
     <div class="prices-wrap">
       <div class="p-sidebar" id="p-sidebar"><div class="p-sidebar-h">Разделы</div></div>
@@ -92,7 +45,7 @@
       <div class="accent-line c w"></div>
       <p class="subtitle">Запишитесь на бесплатную консультацию — составим план и смету лечения</p>
     </div>
-    <div style="background:#fff;border-radius:22px;padding:40px;box-shadow:0 8px 40px rgba(12,22,40,0.10);border:1px solid #edf1f7" class="reveal" id="form-box"></div>
+    <div style="background:#fff;border-radius:22px;padding:40px;box-shadow:var(--s-xl);border:1px solid var(--border-light)" class="reveal" id="form-box"></div>
   </div>
 </section>
 
@@ -100,40 +53,45 @@
 <footer class="site-footer" id="site-footer"></footer>
 <script src="config.js"></script><script src="shared.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const d=SITE_DATA;
-  document.getElementById('mt').textContent=`Цены | ${d.general.clinicName}`;
+document.addEventListener('DOMContentLoaded', function() {
+  var d = SITE_DATA;
+  document.getElementById('mt').textContent = 'Цены | ' + d.general.clinicName;
 
-  const sb=document.getElementById('p-sidebar');
-  d.prices.forEach((cat,i)=>{
-    const el=document.createElement('div');
-    el.className=`p-sidebar-link${i===0?' on':''}`;
-    el.textContent=cat.category;
-    el.addEventListener('click',()=>{
-      document.querySelectorAll('.p-sidebar-link').forEach(l=>l.classList.remove('on'));
+  var sb = document.getElementById('p-sidebar');
+  d.prices.forEach(function(cat, i) {
+    var el = document.createElement('div');
+    el.className = 'p-sidebar-link' + (i===0?' on':'');
+    el.textContent = cat.category;
+    el.addEventListener('click', function() {
+      document.querySelectorAll('.p-sidebar-link').forEach(function(l){l.classList.remove('on')});
       el.classList.add('on');
-      document.getElementById(`pcat-${i}`).scrollIntoView({behavior:'smooth',block:'start'});
+      var target = document.getElementById('pcat-'+i);
+      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
     });
     sb.appendChild(el);
   });
 
-  document.getElementById('p-content').innerHTML=d.prices.map((cat,i)=>`
-    <div class="pcat reveal" id="pcat-${i}">
-      <div class="pcat-head" onclick="toggleP(${i})">
-        <div class="pcat-title">${cat.category}</div>
-        <div class="pcat-toggle open" id="ptg-${i}">▼</div>
-      </div>
-      <div class="pcat-body open" id="pbody-${i}">
-        ${cat.items.map(it=>`<div class="p-row"><span class="p-svc">${it.service}</span><span class="p-price">${it.price}</span></div>`).join('')}
-      </div>
-    </div>`).join('');
+  document.getElementById('p-content').innerHTML = d.prices.map(function(cat,i){
+    return '<div class="pcat reveal" id="pcat-'+i+'">' +
+      '<div class="pcat-head" onclick="toggleP('+i+')">' +
+        '<div class="pcat-title">'+cat.category+'</div>' +
+        '<div class="pcat-toggle open" id="ptg-'+i+'">▼</div>' +
+      '</div>' +
+      '<div class="pcat-body open" id="pbody-'+i+'">' +
+        cat.items.map(function(it){
+          return '<div class="p-row"><span class="p-svc">'+it.service+'</span><span class="p-price">'+it.price+'</span></div>';
+        }).join('') +
+      '</div></div>';
+  }).join('');
 
-  document.getElementById('form-box').innerHTML=getBookingFormHTML(false);
+  document.getElementById('form-box').innerHTML = getBookingFormHTML(false);
   initPage('prices');
 });
-function toggleP(i){
-  document.getElementById(`pbody-${i}`).classList.toggle('open');
-  document.getElementById(`ptg-${i}`).classList.toggle('open');
+function toggleP(i) {
+  var body   = document.getElementById('pbody-'+i);
+  var toggle = document.getElementById('ptg-'+i);
+  if (body)   body.classList.toggle('open');
+  if (toggle) toggle.classList.toggle('open');
 }
 </script>
 </body>
